@@ -1,12 +1,12 @@
 package com.linnbank.stepdef;
 
+import com.linnbank.utilities.Driver;
+import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import utilities.Driver;
-import utilities.ReusableMethods;
 
 
 import java.io.IOException;
@@ -26,13 +26,13 @@ public class Hooks {
     @After
     public void tearDown(Scenario scenario) throws IOException {
 
-//        final byte[] screenshot =  ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-//
-//        if(scenario.isFailed()){
-//            String failed = ReusableMethods.getScreenshot("failed screenshot");
-//            scenario.attach(screenshot, "image/png", "screenshot");
-//        }
-//        Driver.closeDriver();
+        final byte[] screenshot =  ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+
+        if(scenario.isFailed()){
+            String failed = ReusableMethods.getScreenshot("failed screenshot");
+            scenario.attach(screenshot, "image/png", "screenshot");
+        }
+        Driver.closeDriver();
 
     }
 
