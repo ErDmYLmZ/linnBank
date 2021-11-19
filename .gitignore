@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Default ignored files
 /shelf/
 /.idea/workspace.xml
@@ -7,3 +8,10 @@
 /.DS_Store
 /test-output
 /.gitignore
+=======
+.idea
+*.iml
+target
+.DS_Store
+test-output
+>>>>>>> c64d8cacba525c73059b17216b6295b1ab3b4555
