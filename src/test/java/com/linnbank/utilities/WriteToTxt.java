@@ -124,20 +124,20 @@ public class WriteToTxt {
     }
 
 
-    public static void saveAllCustomers(String fileName, Customer[]customers)  {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
-
-            for (int i=0; i<customers.length; i++) {
-                writer.append(customers[i].getSsn() + "," + customers[i].getFirstName() + ",");
-                if(customers[i].getCountry() != null)
-                    writer.append(customers[i].getCountry().getName() + "," + customers[i].getCountry().getId() + ",\n");
-            }
-            writer.close();
-        } catch(Exception e){
-
-        }
-    }
+//    public static void saveAllCustomers(String fileName, Customer[]customers)  {
+//        try {
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+//
+//            for (int i=0; i<customers.length; i++) {
+//                writer.append(customers[i].getSsn() + "," + customers[i].getFirstName() + ",");
+//                if(customers[i].getCountry() != null)
+//                    writer.append(customers[i].getCountry().getName() + "," + customers[i].getCountry().getId() + ",\n");
+//            }
+//            writer.close();
+//        } catch(Exception e){
+//
+//        }
+//    }
 
     public static void saveAllCustomer(String fileName, Customer customer,String password,String username)  {
         try {
@@ -149,7 +149,7 @@ public class WriteToTxt {
 
             writer.append(password + "," +username+","+ customer.getFirstName() + ",");
             writer.append(customer.getLastName() + "," + customer.getSsn() + ",");
-            writer.append(customer.getAddress() + "," + customer.getEmail() + ","+customer.getMobilePhoneNumber()+"\n");
+            writer.append(customer.getAddress() + "," + customer.getEmail() + ","+customer.getPhoneNumber()+"\n");
 
 
             writer.close();
@@ -242,44 +242,44 @@ public class WriteToTxt {
     }
 
 
-    public static void saveDataInFileWithSSN(String fileName, Customer4[] customers)  {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
-
-            for (int i = 0; i < customers.length ; i++) {
-                writer.append(customers[i].getSsn()+",\n");
-            }
-
-
-            writer.close();
-        } catch(Exception e){
-
-        }
-    }
-
-
-
-
-    public static void saveRegistrantData(String fileName, Registrant2 registrant2)  {
-        try {
-
-
-            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+//    public static void saveDataInFileWithSSN(String fileName, Customer4[] customers)  {
+//        try {
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+//
+//            for (int i = 0; i < customers.length ; i++) {
+//                writer.append(customers[i].getSsn()+",\n");
+//            }
+//
+//
+//            writer.close();
+//        } catch(Exception e){
+//
+//        }
+//    }
 
 
 
-            writer.append(registrant2.getPassword()+","+ registrant2.getUsername()+",");
-            writer.append(registrant2.getFirstname()+","+ registrant2.getLastname()+",");
-            writer.append(registrant2.getSnn()+","+ registrant2.getPhonenumber()+",");
-            writer.append(registrant2.getAddress()+","+ registrant2.getEmail()+",\n");
 
-
-
-            writer.close();
-        } catch(Exception e){
-
-        }
-    }
+//    public static void saveRegistrantData(String fileName, Registrant2 registrant2)  {
+//        try {
+//
+//
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+//
+//
+//
+//            writer.append(registrant2.getPassword()+","+ registrant2.getUsername()+",");
+//            writer.append(registrant2.getFirstname()+","+ registrant2.getLastname()+",");
+//            writer.append(registrant2.getSnn()+","+ registrant2.getPhonenumber()+",");
+//            writer.append(registrant2.getAddress()+","+ registrant2.getEmail()+",\n");
+//
+//
+//
+//            writer.close();
+//        } catch(Exception e){
+//
+//        }
+//    }
 
 
 }

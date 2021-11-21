@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {
                 "pretty",
-                "html:reports/default-cucumber-reports.html",
+                "html:reports/html-reports/default-cucumber-reports.html",
                 "json:reports/json-reports/cucumber.json",
                 "junit:reports/xml-report/cucumber.xml",
                 "rerun:reports/failedRerun.txt",
@@ -21,4 +21,8 @@ import org.junit.runner.RunWith;
         monochrome = true
 )
 public class Runner {
+        public static void main(String[] args) {
+
+
+        }
 }
