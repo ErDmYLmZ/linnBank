@@ -1,12 +1,9 @@
 package com.linnbank.utilities;
 
-
-
-
-import gmibank.pojos.Customer;
-import gmibank.pojos.Registrant;
-import gmibank.pojos.States;
-import gmibank.pojos.User;
+import com.linnbank.pojos.Customer;
+import com.linnbank.pojos.Registrant;
+import com.linnbank.pojos.States;
+import com.linnbank.pojos.User;
 
 
 import java.io.BufferedReader;
@@ -28,11 +25,11 @@ public class ReadTxt {
                 line = br.readLine();
                 String [] each = line.split(",");
                 if(each[0] != null)
-                customer.setFirstName(each[0]);
+                    customer.setFirstName(each[0]);
                 if(each[1] != null)
-                customer.setLastName(each[1]);
+                    customer.setLastName(each[1]);
                 if(each[2] != null)
-                customer.setSsn(each[2]);
+                    customer.setSsn(each[2]);
                 all.add(customer);
             }
             String everything = sb.toString();
@@ -335,3 +332,4 @@ public class ReadTxt {
 
 
 }
+
