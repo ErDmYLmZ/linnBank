@@ -1,18 +1,17 @@
 package com.linnbank.utilities;
+        import com.linnbank.pojos.User;
+        import org.apache.poi.ss.usermodel.Cell;
+        import org.apache.poi.ss.usermodel.CellStyle;
+        import org.apache.poi.ss.usermodel.Font;
+        import org.apache.poi.ss.usermodel.Row;
+        import org.apache.poi.xssf.usermodel.XSSFSheet;
+        import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import gmibank.pojos.User;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
+        import java.io.File;
+        import java.io.FileNotFoundException;
+        import java.io.FileOutputStream;
+        import java.io.IOException;
+        import java.util.List;
 
 public class WriteToExcel {
 
@@ -20,7 +19,7 @@ public class WriteToExcel {
 
 
 
-    public static void createExcel(String filePath, List<User> customers, List<String>headers ){
+    public static void createExcel(String filePath, List<User> customers, List<String> headers ){
 
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("firstSheet");
@@ -66,19 +65,9 @@ public class WriteToExcel {
     public static List<User> getCustomers() {
         List<User> customers =
 
-                ReadTxt.returnAWholeUser(ConfigurationReader.getProperty("fileNameOfCustomer"));
+                ReadTxt.returnAWholeUser(ConfigReader.getProperty("fileNameOfCustomer"));
         return customers;
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
