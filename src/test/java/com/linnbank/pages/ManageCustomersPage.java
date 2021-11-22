@@ -60,4 +60,6 @@ public class ManageCustomersPage {
 
     @FindBy(xpath="(//nav/ul/li)[2]")
     public WebElement paginationPreviousPage;
+
+
 }
