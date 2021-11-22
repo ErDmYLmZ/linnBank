@@ -1,6 +1,8 @@
 package com.linnbank.pojos;
 
 public class Registrant {
+
+
     private String ssn;
     private String firstName;
     private String lastName;

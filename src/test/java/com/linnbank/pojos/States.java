@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class States {
 
     private String name;
-    private int id;
 
     public String getName() {
         return name;
@@ -24,6 +23,5 @@ public class States {
         this.id = id;
     }
 
-
+    private int id;
 }
-
