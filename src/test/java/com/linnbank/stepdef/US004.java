@@ -38,7 +38,7 @@ public class US004 {
 
     @Then("close the application")
     public void close_the_application() {
-        Driver.getDriver().close();
+        Driver.closeDriver();
     }
 
 }
