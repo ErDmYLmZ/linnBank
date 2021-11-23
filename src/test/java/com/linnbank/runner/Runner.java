@@ -16,11 +16,10 @@ import org.junit.runner.RunWith;
 //        },
         features = "./src/test/resources/features",
         glue = "stepdef",
-        tags = "@login_test",
-        dryRun = false,
-       monochrome = true
+        tags = "@manage_account",
+        dryRun = false
+        monochrome = true
 )
 public class Runner {
-        public static void main(String[] args) {
-        }
+      
 }

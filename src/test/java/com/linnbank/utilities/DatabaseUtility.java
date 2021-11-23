@@ -1,5 +1,8 @@
 package com.linnbank.utilities;
 
+import com.linnbank.pojos.Country;
+import com.linnbank.pojos.Customer;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -242,5 +245,31 @@ public class DatabaseUtility {
     }
 
 
+    public static void main(String[] args) {
+        String query = "Select * from tp_customer;";
+        createConnection("jdbc:postgresql://157.230.48.97:5432/gmibank_db","techprodb_user","Techpro_@126");
+//        getColumnNames(query);
+//        System.out.println(getColumnNames(query));
+//        System.out.println(getColumnData(query, getColumnNames(query).get(3)));
+//        System.out.println(getCellValuewithRowsAndCells(query,5,4));
+        List <Customer> listOfCustomers = new ArrayList<>();
+
+        List <List< Object>> list =getQueryResultList(query);
+        for (int i=0; i<20; i++){
+            Customer customer = new Customer();
+            Country country = new Country();
+            System.out.println(list.get(i).get(1));
+            customer.setFirstName(list.get(i).get(1).toString());
+            customer.setSsn(list.get(i).get(10).toString());
+            country.setName(list.get(i).get(8).toString());
+            customer.setState(list.get(i).get(14).toString());
+            customer.setZipCode(list.get(i).get(15).toString());
+            customer.setCountry(country);
+            listOfCustomers.add(customer);
+        }
+
+        PDFGenerator.pdfGeneratorRowsAndCellsWithList("All Customers!",listOfCustomers,"AllApplicants.pdf" );
+
+    }
 }
 
