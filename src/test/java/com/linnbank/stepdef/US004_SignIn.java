@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 import java.util.Map;
 
-public class US004 {
+public class US004_SignIn {
 
     MainPage mainPage;
     SignInPage signInPage;
@@ -24,13 +24,16 @@ public class US004 {
     @Given("{string} is on the {string} page")
     public void user_is_on_the_page(String role, String page) {
         Driver.getDriver().get(ConfigReader.getProperty("gmibank_login_url"));
-        mainPage=new MainPage();
-        signInPage=new SignInPage();
+        mainPage = new MainPage();
+        signInPage = new SignInPage();
 
-        mainPage.accountMenu.click();
-        mainPage.signIn.click();
-        signInPage.login(ConfigReader.getProperty(role+"Role"),
-                ConfigReader.getProperty(role+"Password"));
+        // only registered user can be logged in
+        if (!role.equals("unregistered")) {
+            mainPage.accountMenu.click();
+            signInPage.login(ConfigReader.getProperty(role + "Role"),
+                    ConfigReader.getProperty(role + "Password"));
+            mainPage.signIn.click();
+        }
 
         switch (page) {
             case "Manage Accounts":
@@ -63,10 +66,9 @@ public class US004 {
                 break;
             case "User Info":
                 mainPage.accountMenu.click();
-                ReusableMethods.waitForClickablility(mainPage.userInfo,10).click();
+                mainPage.userInfo.click();
                 break;
         }
-        ReusableMethods.waitFor(3);
     }
 
     @Given("Sign Out")
@@ -79,7 +81,7 @@ public class US004 {
     public void enter_credentials(String user, String pwd) {
         signInPage = new SignInPage();
         signInPage.login(user, pwd);
-       Assert.assertTrue(mainPage.myOperations.isDisplayed());
+        Assert.assertTrue(mainPage.myOperations.isDisplayed());
     }
 
     @Then("close the application")
