@@ -55,12 +55,12 @@ public class US004 {
     public void enter_credentials(String user, String pwd) {
         signInPage = new SignInPage();
         signInPage.login(user, pwd);
-        Assert.assertTrue(mainPage.myOperations.isDisplayed());
+       Assert.assertTrue(mainPage.myOperations.isDisplayed());
     }
 
     @Then("close the application")
     public void close_the_application() {
-        Driver.getDriver().close();
+        Driver.closeDriver();
     }
 
 }

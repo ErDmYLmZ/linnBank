@@ -1,6 +1,7 @@
 package com.linnbank.pages;
 
 import com.linnbank.utilities.Driver;
+import io.reactivex.rxjava3.internal.fuseable.QueueFuseable;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -36,6 +37,19 @@ public class ManageAccountsPage {
 
     @FindBy(id="save-entity")
     public WebElement saveButton;
+
+    @FindBy(xpath ="//div[@class='text-danger form-group']")
+    public WebElement descriptionTextBoxErrorMessage;
+
+    @FindBy(xpath = "(//div[@class='text-danger form-group'])[3]")
+    public WebElement balanceTextBoxErrorMessage;
+
+    @FindBy(xpath = "(//div[@class='form-group'])[5]")
+    public WebElement CreateDateErrorMessage;
+
+    @FindBy(xpath = "(//div[@class='form-group'])[6]")
+    public WebElement ClosedDateErrorMessage;
+
 
 
 }

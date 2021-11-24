@@ -61,5 +61,66 @@ public class ManageCustomersPage {
     @FindBy(xpath="(//nav/ul/li)[2]")
     public WebElement paginationPreviousPage;
 
+    @FindBy(id = "gmibankfrontendApp.tPCustomer.home.createOrEditLabel")
+    public WebElement createOrEditACustomerHeading;
 
+    @FindBy(xpath = "//div[@class='invalid-feedback']")
+    public WebElement thisFieldIsRequiredMessage;
+
+    @FindBy(id = "search-ssn")
+    public WebElement ssnSearchField;
+
+    @FindBy(xpath = "//button[contains(text(),'Search')]")
+    public WebElement searchButton;
+
+    @FindBy(id = "tp-customer-firstName")
+    public WebElement firstName;
+
+    @FindBy(id = "tp-customer-lastName")
+    public WebElement lastName;
+
+    @FindBy(id = "tp-customer-middleInitial")
+    public WebElement middleInitial;
+
+    @FindBy(id = "tp-customer-email")
+    public WebElement email;
+
+    @FindBy(id = "tp-customer-mobilePhoneNumber")
+    public WebElement mobilePhoneNumber;
+
+    @FindBy(id = "tp-customer-phoneNumber")
+    public WebElement phoneNumber;
+
+    @FindBy(id = "tp-customer-zipCode")
+    public WebElement zipCode;
+
+    @FindBy(id = "tp-customer-address")
+    public WebElement adress;
+
+    @FindBy(id = "tp-customer-city")
+    public WebElement city;
+
+    @FindBy(id = "tp-customer-ssn")
+    public WebElement ssn;
+
+    @FindBy(id = "tp-customer-createDate")
+    public WebElement createDate;
+
+    @FindBy(id = "tp-customer-country")
+    public WebElement countryDropdown;
+
+    @FindBy(id = "tp-customer-state")
+    public WebElement state;
+
+    @FindBy(id = "tp-customer-user")
+    public WebElement userDropdown;
+
+    @FindBy(id = "tp-customer-account")
+    public WebElement account;
+
+    @FindBy(id = "tp-customer-zelleEnrolled")
+    public WebElement zelleEnrolledCheckbox;
+
+    @FindBy(id = "save-entity")
+    public WebElement saveButton;
 }
