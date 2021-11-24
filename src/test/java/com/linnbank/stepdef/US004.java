@@ -24,31 +24,55 @@ public class US004 {
     @Given("{string} is on the {string} page")
     public void user_is_on_the_page(String role, String page) {
         Driver.getDriver().get(ConfigReader.getProperty("gmibank_login_url"));
-        mainPage = new MainPage();
+        mainPage=new MainPage();
+        signInPage=new SignInPage();
+
+        mainPage.accountMenu.click();
+        mainPage.signIn.click();
+        signInPage.login(ConfigReader.getProperty(role+"Role"),
+                ConfigReader.getProperty(role+"Password"));
+
         switch (page) {
-            case "Main":
-                break;
             case "Manage Accounts":
+                mainPage.myOperations.click();
+                mainPage.manageAccounts.click();
                 break;
             case "Manage Customers":
+                mainPage.myOperations.click();
+                mainPage.manageCustomers.click();
                 break;
             case "My Accounts":
+                mainPage.myOperations.click();
+                mainPage.myAccounts.click();
                 break;
             case "Password":
+                mainPage.accountMenu.click();
+                mainPage.password.click();
                 break;
             case "Register":
-                break;
-            case "Sign In":
                 mainPage.accountMenu.click();
-                mainPage.signIn.click();
+                mainPage.register.click();
                 break;
             case "Transfer Money":
+                mainPage.myOperations.click();
+                mainPage.transferMoney.click();
                 break;
             case "User Management":
+                mainPage.administration.click();
+                mainPage.userManagement.click();
                 break;
-            case "User Settings":
+            case "User Info":
+                mainPage.accountMenu.click();
+                ReusableMethods.waitForClickablility(mainPage.userInfo,10).click();
                 break;
         }
+        ReusableMethods.waitFor(3);
+    }
+
+    @Given("Sign Out")
+    public void sign_out() {
+        mainPage.accountMenu.click();
+        mainPage.signOut.click();
     }
 
     @And("login with {string} and {string}")
