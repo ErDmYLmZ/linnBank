@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
         features = "./src/test/resources/features",
         glue = "stepdef",
         tags = "@manage_account",
-        dryRun = false
+        dryRun = false,
         monochrome = true
 )
 public class Runner {

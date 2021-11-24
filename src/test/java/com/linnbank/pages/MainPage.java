@@ -35,8 +35,35 @@ public class MainPage {
     @FindBy(id = "login-item")
     public WebElement signIn;
 
-    @FindBy(css = "//span[text()='Register']")
+    @FindBy(xpath = "//span[text()='Register']")
     public WebElement register;
 
+    @FindBy(xpath = "//span[text()='Manage Customers']")
+    public WebElement manageCustomers;
+
+    @FindBy(xpath = "//span[text()='Manage Accounts']")
+    public WebElement manageAccounts;
+
+    @FindBy(linkText = "My Accounts")
+    public WebElement myAccounts;
+
+    @FindBy(linkText = "Transfer Money")
+    public WebElement transferMoney;
+
+    @FindBy(xpath = "//span[text()='Password']")
+    public WebElement password;
+
+    @FindBy(xpath = "//span[text()='Administration']")
+    public WebElement administration;
+
+    @FindBy(xpath = "//span[text()='User management']")
+    public WebElement userManagement;
+
+    @FindBy(xpath = "//span[text()='User Info']")
+    public WebElement userInfo;
+
+    @FindBy(xpath = "//span[text()='Sign out']")
+    public WebElement signOut;
 
 }
+
