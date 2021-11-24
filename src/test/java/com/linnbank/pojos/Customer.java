@@ -78,5 +78,4 @@ public class Customer {
     public void setPassword(String password) {
         this.password = password;
     }
->>>>>>> cc7fafe9dac884790e57460d5fecf030a8bd86ef
 }
