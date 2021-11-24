@@ -30,9 +30,9 @@ public class US004_SignIn {
         // only registered user can be logged in
         if (!role.equals("unregistered")) {
             mainPage.accountMenu.click();
+            mainPage.signIn.click();
             signInPage.login(ConfigReader.getProperty(role + "Role"),
                     ConfigReader.getProperty(role + "Password"));
-            mainPage.signIn.click();
         }
 
         switch (page) {
