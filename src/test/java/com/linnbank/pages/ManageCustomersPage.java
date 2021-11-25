@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class ManageCustomersPage {
     public ManageCustomersPage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -17,48 +19,48 @@ public class ManageCustomersPage {
     public WebElement createNewCustomerButton;
 
     @FindBy(xpath="//table/tbody/tr/td[1]/a ")
-    public WebElement allIDColumn;
+    public List<WebElement> allIDColumn;
 
     @FindBy(xpath="//table/tbody/tr/td[2]")
-    public WebElement allFirstNameColumn;
+    public List<WebElement> allFirstNameColumn;
 
     @FindBy(xpath="//table/tbody/tr/td[3]")
-    public WebElement allLastNameColumn;
+    public List<WebElement> allLastNameColumn;
 
     @FindBy(xpath="//table/tbody/tr/td[4]")
-    public WebElement allMiddleInitialColumn;
+    public List<WebElement> allMiddleInitialColumn;
 
     @FindBy(xpath="//table/tbody/tr/td[5]")
-    public WebElement allEmailColumn;
+    public List<WebElement> allEmailColumn;
 
     @FindBy(xpath="//table/tbody/tr/td[6]")
-    public WebElement allMobilePhoneNumberColumn;
+    public List<WebElement> allMobilePhoneNumberColumn;
 
     @FindBy(xpath="//table/tbody/tr/td[7]")
-    public WebElement allPhoneNumberColumn;
+    public List<WebElement> allPhoneNumberColumn;
 
     @FindBy(xpath="//table/tbody/tr/td[8]")
-    public WebElement allAddressColumn;
+    public List<WebElement> allAddressColumn;
 
     @FindBy(xpath="//span[text()='View']")
-    public WebElement allViewButton;
+    public List<WebElement> allViewButton;
 
     @FindBy(xpath="//span[text()='Edit']")
-    public WebElement allEditButton;
+    public List<WebElement> allEditButton;
 
     @FindBy(xpath="//span[text()='Delete']")
-    public WebElement allDeleteButton;
+    public List<WebElement> allDeleteButton;
 
-    @FindBy(xpath="(//nav/ul/li)[1]")
+    @FindBy(linkText="««")
     public WebElement paginationFirstPage;
 
-    @FindBy(xpath="(//nav/ul/li)[8]")
+    @FindBy(linkText="»»")
     public WebElement paginationLastPage;
 
-    @FindBy(xpath="(//nav/ul/li)[7]")
+    @FindBy(xpath="//a[@aria-label='Next']")
     public WebElement paginationNextPage;
 
-    @FindBy(xpath="(//nav/ul/li)[2]")
+    @FindBy(xpath="//a[@aria-label='Previous']")
     public WebElement paginationPreviousPage;
 
     @FindBy(id = "gmibankfrontendApp.tPCustomer.home.createOrEditLabel")
