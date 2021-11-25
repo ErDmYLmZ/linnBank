@@ -1,7 +1,7 @@
 Feature: US004
 
-  Background: Navigate to related page
-    Given "unregistered" is on the "Register" page
+#  Background: Navigate to related page
+#    Given "unregistered" is on the "Register" page
 
   @login_test
   Scenario: There should be a valid username and password validating the success message to login
@@ -23,14 +23,14 @@ Feature: US004
     Given "<role>" is on the "<page>" page
     And Sign Out
     Examples:
-      | role         | page     |
-#      | user         | User Info        |
-#      | user         | Password         |
-#      | admin        | User Management  |
-#      | manager      | Manage Customers |
-#      | manager      | Manage Accounts  |
-#      | employee     | Manage Customers |
-#      | employee     | Manage Accounts  |
-#      | customer     | My Accounts      |
-#      | customer     | Transfer Money   |
-      | unregistered | Register |
+      | role         | page             |
+      | user         | User Info        |
+      | user         | Password         |
+      | admin        | User Management  |
+      | manager      | Manage Customers |
+      | manager      | Manage Accounts  |
+      | employee     | Manage Customers |
+      | employee     | Manage Accounts  |
+      | customer     | My Accounts      |
+      | customer     | Transfer Money   |
+      | unregistered | Register         |
