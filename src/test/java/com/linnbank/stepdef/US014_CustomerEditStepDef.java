@@ -3,6 +3,7 @@ package com.linnbank.stepdef;
 import com.github.javafaker.Faker;
 import com.linnbank.pages.ManageCustomersPage;
 import com.linnbank.utilities.Driver;
+import com.linnbank.utilities.JSUtils;
 import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
@@ -35,7 +36,7 @@ public class US014_CustomerEditStepDef {
     public void employee_clicks_on_the_last_added_customer_edit_button_on_the_page() {
         ReusableMethods.waitFor(3);
         List<WebElement> allEditButton = manageCustomersPage.allEditButton;
-        allEditButton.get(allEditButton.size() - 1).click();
+        JSUtils.clickElementByJS(allEditButton.get(allEditButton.size() - 1));
     }
 
     @Then("employee checks fields and updates {string}")
@@ -102,29 +103,39 @@ public class US014_CustomerEditStepDef {
             manageCustomersPage.state.clear();
         }
 
-        Select select1 = new Select(manageCustomersPage.account);
-        act.keyDown(Keys.CONTROL).perform();
-        select1.selectByVisibleText("abab");
-        select1.selectByVisibleText("credit card");
-        act.keyUp(Keys.CONTROL).perform();
+
     }
 
+    @Then("employee chooses two accounts from account section")
+    public void employee_chooses_two_accounts_from_account_section() {
+        ReusableMethods.waitFor(2);
+        Select select1 = new Select(manageCustomersPage.account);
 
-//    @Then("employee chooses two accounts from account section")
-//    public void employee_chooses_two_accounts_from_account_section() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
-//    @Then("employee clicks Zelle Enrolled if unchecked")
-//    public void employee_clicks_zelle_enrolled_if_unchecked() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
-//    @Then("employee clicks on Save button")
-//    public void employee_clicks_on_save_button() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
+        List<WebElement>accountOptionsList= select1.getOptions();
+        System.out.println("accountOptionsList.get(5) = " + accountOptionsList.get(5).getText());
+        System.out.println("accountOptionsList.get(16) = " + accountOptionsList.get(16).getText());
+//        select1.selectByIndex(accountOptionsList.indexOf("Adil hesap1"));
+//        select1.selectByVisibleText(accountOptionsList.get(15).getText());
+//        select1.selectByVisibleText(accountOptionsList.get(15).getText().click());
+//        JSUtils.clickElementByJS(accountOptionsList.get(15));
+        ReusableMethods.doubleClick(accountOptionsList.get(16));
+        act.keyDown(Keys.CONTROL).perform();
+        accountOptionsList.get(15).click();
+        act.keyUp(Keys.CONTROL).perform();
+
+
+    }
+    @Then("employee clicks Zelle Enrolled if unchecked")
+    public void employee_clicks_zelle_enrolled_if_unchecked() {
+        if (!manageCustomersPage.zelleEnrolledCheckbox.isSelected()) {
+            manageCustomersPage.zelleEnrolledCheckbox.click();
+        }
+    }
+    @Then("employee clicks on Save button")
+    public void employee_clicks_on_save_button() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
 //    @Then("employee verify the success message on the Manage Customer page")
 //    public void employee_verify_the_success_message_on_the_manage_customer_page() {
 //        // Write code here that turns the phrase above into concrete actions
