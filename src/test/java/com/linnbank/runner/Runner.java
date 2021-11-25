@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 //        },
         features = "./src/test/resources/features",
         glue = "stepdef",
-        tags = "@manage_account",
+        tags = "@register",
         dryRun = false,
         monochrome = true
 )
