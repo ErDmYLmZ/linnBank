@@ -1,20 +1,14 @@
 package com.linnbank.stepdef;
-
 import com.linnbank.pages.MainPage;
 import com.linnbank.pages.SignInPage;
 import com.linnbank.utilities.ConfigReader;
 import com.linnbank.utilities.Driver;
-import com.linnbank.utilities.ReusableMethods;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 
-import java.util.List;
-import java.util.Map;
+import org.junit.Assert;
+
 
 public class US004_SignIn {
 

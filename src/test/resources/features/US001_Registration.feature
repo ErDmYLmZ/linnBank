@@ -1,9 +1,24 @@
-Feature: US001
+Feature: US001 Registration
 
-  Background: Given user is on the registration page
+  Background:
+    Given "unregistered" is on the "Register" page
 
-  Scenario Outline: There should be a valid SSN respecting the "-" where necessary, it should be 9 digits long
-    When Enter all required information
+  @register
+  Scenario: Register with invalid fields
+    And Enter "invalid" "ssn"
+    And Enter "invalid" "firstname"
+    And Enter "invalid" "lastname"
+    And Enter "invalid" "address"
+    And Enter "invalid" "mobilephone"
+    And Enter "invalid" "username"
+    And Enter "invalid" "email"
+    And Enter "invalid" "firstPassword"
+    And Enter "invalid" "secondPassword"
     Then Click on register
+    And verify registered "unsuccessfully"
+    And delete registrant
+
+
+
 
 
