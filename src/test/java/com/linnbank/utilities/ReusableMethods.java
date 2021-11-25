@@ -182,4 +182,15 @@ public class ReusableMethods {
         select.selectByIndex(optionIndex);
         return select.getFirstSelectedOption();
     }
+
+    /**
+     * Deletes the value in the given input element and types the value
+     *
+     * @param element
+     * @return
+     */
+    public static void clearAndSendText(WebElement element, String value){
+        element.clear();
+        element.sendKeys(value);
+    }
 }
