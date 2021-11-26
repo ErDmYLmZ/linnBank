@@ -1,5 +1,6 @@
 package com.linnbank.stepdef;
 import com.linnbank.pages.MainPage;
+import com.linnbank.pages.ManageAccountsPage;
 import com.linnbank.pages.SignInPage;
 import com.linnbank.utilities.ConfigReader;
 import com.linnbank.utilities.Driver;

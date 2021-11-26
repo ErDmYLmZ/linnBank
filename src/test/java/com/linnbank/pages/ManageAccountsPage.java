@@ -38,10 +38,10 @@ public class ManageAccountsPage {
     @FindBy(id="save-entity")
     public WebElement saveButton;
 
-    @FindBy(xpath ="//div[@class='text-danger form-group']")
+    @FindBy(xpath ="(//*[contains(text(),'This field is required.')])[1]")
     public WebElement descriptionTextBoxErrorMessage;
 
-    @FindBy(xpath = "(//div[@class='text-danger form-group'])[3]")
+    @FindBy(xpath = "(//*[contains(text(),'This field is required.')])[2]")
     public WebElement balanceTextBoxErrorMessage;
 
     @FindBy(xpath = "(//div[@class='form-group'])[5]")
@@ -50,6 +50,8 @@ public class ManageAccountsPage {
     @FindBy(xpath = "(//div[@class='form-group'])[6]")
     public WebElement ClosedDateErrorMessage;
 
+    @FindBy(id = "jh-create-entity")
+    public WebElement createAnewAccountButton;
 
 
 }

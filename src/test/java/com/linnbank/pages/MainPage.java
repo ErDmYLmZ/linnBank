@@ -65,5 +65,7 @@ public class MainPage {
     @FindBy(xpath = "//span[text()='Sign out']")
     public WebElement signOut;
 
+
+
 }
 

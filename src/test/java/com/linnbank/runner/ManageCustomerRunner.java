@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "./src/test/resources/features",
-        glue = "stepdef",
-        tags = "@login_test",
+        features = "/Users/erdem/IdeaProjects/linn_bank/src/test/resources/features",
+        glue = {"stepdef"},
+        tags = "@manage_account_Test",
         dryRun = false,
         monochrome = true
 )

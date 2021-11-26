@@ -1,29 +1,31 @@
 @manage_account
 Feature: Create_A_New_Account
+  Background: Navigate to main page
+    Given "employee" is on the "Manage Accounts" page
+    And user clicks on the CreateANewAccount button
 
-#  @manage_account_Test
-#    Scenario Outline:Create_A_New_Account_With_Valid_Data
-#      Given user is on ManageAccountsPage
-#      And user enters Description "<Description>"
-#      And user selects Account_Type
-#      And user selects Account_Status_type
-#      And user enters Description "<Balance>"
-#      And user enters Description "<Create_Date>"
-#      And user enters Description "<Closed_date>"
-#      When user clicks on the save button
-#      Then verify no "<error_message>" is displayed on Description field
-#      Then verify no "<error_message>" is displayed on Balance field
-#      Then verify no "<error_message>" is displayed on Create_Date field
-#      Then verify no "<error_message>" is displayed on Closed_date field
-#      And Close the application
-#
-#
-#
-#
-#      Examples: Test Data
-#        | Description             | Balance | Create_Date       | Closed_date       | error_message          |
-#        | New Account_6thGenQA_01 | 1000    | 11/25/2021, 12:00 | 11/25/2022, 11:00 | This field is required |
-#
+
+    Scenario Outline:Create_A_New_Account_With_Valid_Data
+      And user enters Description "<Description>"
+      And user selects Account_Type
+      And user selects Account_Status_type
+      And user enters Balance "<Balance>"
+      And user enters CreateDate "<Create_Date>"
+      And user enters ClosedDate "<Closed_date>"
+      When user clicks on the save button
+      Then verify no "<error_message>" is displayed on Description field
+      Then verify no "<error_message>" is displayed on Balance field
+      Then verify no "<error_message>" is displayed on Create_Date field
+      Then verify no "<error_message>" is displayed on Closed_date field
+      And Close the application
+
+
+
+
+      Examples: Test Data
+        | Description             | Balance | Create_Date       | Closed_date       | error_message          |
+        | New Account_6thGenQA_01 |  1000   | 11/25/2021, 12:00 | 11/25/2022, 11:00 | This field is required |
+
 
 #    @manage_account_descriptionBox_negative_Test
 #    Scenario Outline:Create_A_New_Account_With_Empty_Description
