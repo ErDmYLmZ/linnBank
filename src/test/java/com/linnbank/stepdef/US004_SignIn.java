@@ -12,11 +12,11 @@ import org.junit.Assert;
 
 public class US004_SignIn {
 
-    MainPage mainPage;
-    SignInPage signInPage;
+    static MainPage mainPage;
+    static SignInPage signInPage;
 
     @Given("{string} is on the {string} page")
-    public void user_is_on_the_page(String role, String page) {
+    public static void user_is_on_the_page(String role, String page) {
         Driver.getDriver().get(ConfigReader.getProperty("gmibank_login_url"));
         mainPage = new MainPage();
         signInPage = new SignInPage();
