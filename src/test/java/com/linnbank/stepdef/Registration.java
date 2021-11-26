@@ -87,5 +87,17 @@ public class Registration {
 
     @And("Register with {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string}")
     public void registerWithAll(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7, String arg8) {
-    }
+        registerPage.ssnInput.sendKeys(ssn);
+        registerPage.firstNameInput.sendKeys(firstname);
+        registerPage.lastNameInput.sendKeys(lastname);
+        registerPage.addressInput.sendKeys(address);
+        registerPage.emailInput.sendKeys(mobilephone);
+        registerPage.usernameInput.sendKeys(username);
+        registerPage.emailInput.sendKeys(email);
+        registerPage.firstNameInput.sendKeys(firstPassword);
+        registerPage.secondPasswordInput.sendKeys(secondPassword);
+
+
+
+    }    }
 }
