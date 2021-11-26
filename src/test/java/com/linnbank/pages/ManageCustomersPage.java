@@ -125,4 +125,7 @@ public class ManageCustomersPage {
 
     @FindBy(id = "save-entity")
     public WebElement saveButton;
+
+    @FindBy(xpath = "//*[contains(@class,'Toastify__toast-body')]")
+    public WebElement popupMessage;
 }

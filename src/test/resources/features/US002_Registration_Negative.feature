@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Feature: Registration Negative Scenario
 
   Background: Navigate to related page

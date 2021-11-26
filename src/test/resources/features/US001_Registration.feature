@@ -17,9 +17,3 @@ Feature: US001 Registration
     Then Click on register
     And verify registered "successfully"
     And delete registrant
-
-
-
-
-
-
