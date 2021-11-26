@@ -3,20 +3,26 @@ package com.linnbank.stepdef;
 import com.github.javafaker.Faker;
 import com.linnbank.pages.RegisterPage;
 import com.linnbank.utilities.ConfigReader;
+import com.linnbank.utilities.DatabaseUtility;
+import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
+import javax.xml.crypto.Data;
+
 public class Registration {
     Faker faker = new Faker();
     RegisterPage registerPage=new RegisterPage();
+    String ssn = faker.idNumber().ssnValid();
     @Given("Enter {string} {string}")
     public void enter(String type, String field) {
         if (type.equals("valid")){
             switch (field){
                 case "ssn":
-                    registerPage.ssnInput.sendKeys(faker.idNumber().ssnValid());
+                    registerPage.ssnInput.sendKeys(ssn);
+                    System.out.println(ssn);
                     break;
                 case "firstname":
                     registerPage.firstNameInput.sendKeys(faker.name().firstName());
@@ -74,19 +80,22 @@ public class Registration {
     }
     @Then("verify registered {string}")
     public void verify_registered(String condition) {
-        if (condition.equals("successfully")){
-            Assert.assertFalse(registerPage.addressInput.isDisplayed());
-        }else {
-            Assert.assertTrue(registerPage.addressInput.isDisplayed());
-        }
+//        ReusableMethods.waitForVisibility(registerPage.popupMessage, 10);
+//        if (condition.equals("successfully")) {
+//            Assert.assertTrue(registerPage.popupMessage.getAttribute("class").contains("success"));
+//        } else {
+//            Assert.assertTrue(registerPage.popupMessage.getAttribute("class").contains("error"));
+//        }
     }
     @Then("delete registrant")
     public void delete_registrant() {
-
+        DatabaseUtility.createConnection();
+        System.out.println("DELETE FROM tpaccount_registration WHERE ssn ='" + ssn + "'");
+        DatabaseUtility.executeUpdate("DELETE FROM tpaccount_registration WHERE ssn ='" + ssn + "'");
     }
 
     @And("Register with {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string}")
-    public void registerWithAll(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7, String arg8) {
+    public void registerWithAll(String ssn, String firstname, String lastname, String address, String mobilephone, String username, String email, String firstPassword, String secondPassword) {
         registerPage.ssnInput.sendKeys(ssn);
         registerPage.firstNameInput.sendKeys(firstname);
         registerPage.lastNameInput.sendKeys(lastname);
@@ -99,5 +108,5 @@ public class Registration {
 
 
 
-    }    }
+    }
 }

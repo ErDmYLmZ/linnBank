@@ -32,7 +32,7 @@ public class US003 {
         if (result.equals("unsuccessfully")) {
             Assert.assertTrue(registerPage.strengthBarList.stream().noneMatch(t -> t.getAttribute("style").contains("rgb(0, 255, 0)")));
         }else {
-            Assert.assertTrue(registerPage.strengthBarList.stream().allMatch(t -> t.getAttribute("style").contains("rgb(0, 255, 0)")));
+            Assert.assertTrue(registerPage.strengthBarList.stream().anyMatch(t -> t.getAttribute("style").contains("rgb(0, 255, 0)")));
         }
     }
 }
