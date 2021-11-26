@@ -5,26 +5,30 @@ import com.linnbank.pages.RegisterPage;
 import com.linnbank.pojos.Registrant;
 import com.linnbank.utilities.ConfigReader;
 import com.linnbank.utilities.DatabaseUtility;
+import com.linnbank.utilities.Driver;
 import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import javax.xml.crypto.Data;
 
 public class Registration {
     Faker faker = new Faker();
-    RegisterPage registerPage=new RegisterPage();
+    RegisterPage registerPage = new RegisterPage();
     Registrant registrant = new Registrant();
+
     @Given("Enter {string} {string}")
     public void addRegistrant(String type, String field) {
-        if (type.equals("valid")){
-
-            switch (field){
+        if (type.equals("valid")) {
+            switch (field) {
 
                 case "ssn":
                     registerPage.ssnInput.sendKeys(registrant.getSsn());
+//                    registerPage.ssnInput.sendKeys("397-26-7682");
                     break;
                 case "firstname":
                     registerPage.firstNameInput.sendKeys(registrant.getFirstName());
@@ -51,10 +55,8 @@ public class Registration {
                     registerPage.secondPasswordInput.sendKeys(ConfigReader.getProperty("userPassword"));
                     break;
             }
-        }else if(type.equals("invalid")){
-
-            switch (field){
-
+        } else if (type.equals("invalid")) {
+            switch (field) {
                 case "ssn":
                     registerPage.ssnInput.sendKeys(faker.idNumber().invalidSvSeSsn());
                     break;
@@ -78,25 +80,26 @@ public class Registration {
         }
 
     }
+
     @Then("Click on register")
     public void click_on_register() {
         registerPage.submitRegisterButton.click();
     }
+
     @Then("verify registered {string}")
     public void verify_registered(String condition) {
-//        ReusableMethods.waitForVisibility(registerPage.popupMessage, 10);
-//        if (condition.equals("successfully")) {
-//            Assert.assertTrue(registerPage.popupMessage.getAttribute("class").contains("success"));
-//        } else {
-//            Assert.assertTrue(registerPage.popupMessage.getAttribute("class").contains("error"));
-//        }
+        boolean isSuccess = ReusableMethods.isToastSuccess(registerPage.bySuccessMessage);
+       if (condition.equals("successfully")) {
+            Assert.assertTrue(isSuccess);
+        } else {
+            Assert.assertFalse(isSuccess);
+        }
     }
+
     @Then("delete registrant")
     public void delete_registrant() {
         DatabaseUtility.createConnection();
-        DatabaseUtility.executeUpdate("" +
-                "DELETE FROM tpaccount_registration " +
-                "WHERE ssn ='" + "" + "'");
+        DatabaseUtility.execute("DELETE FROM tpaccount_registration WHERE ssn ='" + registrant.getSsn() + "'");
         DatabaseUtility.closeConnection();
     }
 

@@ -274,7 +274,7 @@ public class DatabaseUtility {
         PDFGenerator.pdfGeneratorRowsAndCellsWithList("All Customers!",listOfCustomers,"AllApplicants.pdf" );
 
     }
-    public static void executeUpdate(String query) {
+    public static void executeUpdate(String updateStatement) {
         try {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         } catch (SQLException e) {
@@ -282,13 +282,13 @@ public class DatabaseUtility {
             e.printStackTrace();
         }
         try {
-            updatedRows = statement.executeUpdate(query);
+            updatedRows = statement.executeUpdate(updateStatement);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
-    public static void execute(String query) {
+    public static void execute(String dml) {
         try {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         } catch (SQLException e) {
@@ -297,7 +297,7 @@ public class DatabaseUtility {
         }
         try {
             //normally, execute method returns false if query is executed successfully. We added not condition so it shows us correct answer.
-            isSuccess = !statement.execute(query);
+            isSuccess = !statement.execute(dml);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
