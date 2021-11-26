@@ -3,11 +3,12 @@ package com.linnbank.stepdef;
 import com.github.javafaker.Faker;
 import com.linnbank.pages.RegisterPage;
 import com.linnbank.utilities.ConfigReader;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
-public class US001_Registration {
+public class Registration {
     Faker faker = new Faker();
     RegisterPage registerPage=new RegisterPage();
     @Given("Enter {string} {string}")
@@ -47,20 +48,11 @@ public class US001_Registration {
                 case "ssn":
                     registerPage.ssnInput.sendKeys(faker.idNumber().invalidSvSeSsn());
                     break;
-                case "firstname":
-                    registerPage.firstNameInput.sendKeys(faker.name().firstName());
-                    break;
-                case "lastname":
-                    registerPage.lastNameInput.sendKeys(faker.name().lastName());
-                    break;
-                case "address":
-                    registerPage.addressInput.sendKeys(faker.address().fullAddress());
-                    break;
                 case "mobilephone":
-                    registerPage.phoneInput.sendKeys(faker.phoneNumber().cellPhone());
+                    registerPage.phoneInput.sendKeys(faker.name().name());
                     break;
                 case "username":
-                    registerPage.usernameInput.sendKeys(faker.animal().name());
+                    registerPage.usernameInput.sendKeys("^#$½&/()");
                     break;
                 case "email":
                     registerPage.emailInput.sendKeys(ConfigReader.getProperty("invalidEmail"));
@@ -91,5 +83,9 @@ public class US001_Registration {
     @Then("delete registrant")
     public void delete_registrant() {
 
+    }
+
+    @And("Register with {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string}")
+    public void registerWithAll(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7, String arg8) {
     }
 }
