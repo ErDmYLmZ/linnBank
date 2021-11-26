@@ -1,28 +1,22 @@
 package com.linnbank.stepdef;
-
 import com.linnbank.pages.MainPage;
 import com.linnbank.pages.SignInPage;
 import com.linnbank.utilities.ConfigReader;
 import com.linnbank.utilities.Driver;
-import com.linnbank.utilities.ReusableMethods;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 
-import java.util.List;
-import java.util.Map;
+import org.junit.Assert;
+
 
 public class US004_SignIn {
 
-    MainPage mainPage;
-    SignInPage signInPage;
+    static MainPage mainPage;
+    static SignInPage signInPage;
 
     @Given("{string} is on the {string} page")
-    public void user_is_on_the_page(String role, String page) {
+    public static void user_is_on_the_page(String role, String page) {
         Driver.getDriver().get(ConfigReader.getProperty("gmibank_login_url"));
         mainPage = new MainPage();
         signInPage = new SignInPage();
