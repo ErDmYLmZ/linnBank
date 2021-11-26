@@ -15,5 +15,5 @@ Feature: US001 Registration
     And Enter "valid" "firstPassword"
     And Enter "valid" "secondPassword"
     Then Click on register
-    And verify registered "successfully"
+    And verify registered "unsuccessfully"
     And delete registrant

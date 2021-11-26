@@ -18,10 +18,13 @@ public class DatabaseUtility {
     private static Connection connection;
     private static Statement statement;
     private static ResultSet resultSet;
+    private static int updatedRows;
+    private static boolean isSuccess;
     public static void createConnection() {
         String url = ConfigReader.getProperty("database_url");
         String user = ConfigReader.getProperty("database_user");
         String password = "Techpro_@126";
+
         try {
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
@@ -270,6 +273,35 @@ public class DatabaseUtility {
 
         PDFGenerator.pdfGeneratorRowsAndCellsWithList("All Customers!",listOfCustomers,"AllApplicants.pdf" );
 
+    }
+    public static void executeUpdate(String updateStatement) {
+        try {
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            updatedRows = statement.executeUpdate(updateStatement);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    public static void execute(String dml) {
+        try {
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            //normally, execute method returns false if query is executed successfully. We added not condition so it shows us correct answer.
+            isSuccess = !statement.execute(dml);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
 

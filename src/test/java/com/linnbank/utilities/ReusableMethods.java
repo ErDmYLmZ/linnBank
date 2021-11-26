@@ -189,8 +189,18 @@ public class ReusableMethods {
      * @param element
      * @return
      */
-    public static void clearAndSendText(WebElement element, String value){
+    public static void clearAndSendText(WebElement element, String value) {
         element.clear();
         element.sendKeys(value);
+    }
+
+    public static boolean isToastSuccess(By bySuccessMessage) {
+        try {
+            if (Driver.getDriver().findElement(bySuccessMessage) != null)
+                return true;
+        } catch (Exception e) {
+            // e.getMessage();
+        }
+        return false;
     }
 }

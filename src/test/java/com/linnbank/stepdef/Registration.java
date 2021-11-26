@@ -2,30 +2,42 @@ package com.linnbank.stepdef;
 
 import com.github.javafaker.Faker;
 import com.linnbank.pages.RegisterPage;
+import com.linnbank.pojos.Registrant;
 import com.linnbank.utilities.ConfigReader;
+import com.linnbank.utilities.DatabaseUtility;
+import com.linnbank.utilities.Driver;
+import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import javax.xml.crypto.Data;
 
 public class Registration {
     Faker faker = new Faker();
-    RegisterPage registerPage=new RegisterPage();
+    RegisterPage registerPage = new RegisterPage();
+    Registrant registrant = new Registrant();
+
     @Given("Enter {string} {string}")
-    public void enter(String type, String field) {
-        if (type.equals("valid")){
-            switch (field){
+    public void addRegistrant(String type, String field) {
+        if (type.equals("valid")) {
+            switch (field) {
+
                 case "ssn":
-                    registerPage.ssnInput.sendKeys(faker.idNumber().ssnValid());
+                    registerPage.ssnInput.sendKeys(registrant.getSsn());
+//                    registerPage.ssnInput.sendKeys("397-26-7682");
                     break;
                 case "firstname":
-                    registerPage.firstNameInput.sendKeys(faker.name().firstName());
+                    registerPage.firstNameInput.sendKeys(registrant.getFirstName());
                     break;
                 case "lastname":
-                    registerPage.lastNameInput.sendKeys(faker.name().lastName());
+                    registerPage.lastNameInput.sendKeys(registrant.getLastName());
                     break;
                 case "address":
-                    registerPage.addressInput.sendKeys(faker.address().fullAddress());
+                    registerPage.addressInput.sendKeys(registrant.getAddress());
                     break;
                 case "mobilephone":
                     registerPage.phoneInput.sendKeys(faker.phoneNumber().cellPhone());
@@ -43,8 +55,8 @@ public class Registration {
                     registerPage.secondPasswordInput.sendKeys(ConfigReader.getProperty("userPassword"));
                     break;
             }
-        }else if(type.equals("invalid")){
-            switch (field){
+        } else if (type.equals("invalid")) {
+            switch (field) {
                 case "ssn":
                     registerPage.ssnInput.sendKeys(faker.idNumber().invalidSvSeSsn());
                     break;
@@ -68,21 +80,27 @@ public class Registration {
         }
 
     }
+
     @Then("Click on register")
     public void click_on_register() {
         registerPage.submitRegisterButton.click();
     }
+
     @Then("verify registered {string}")
     public void verify_registered(String condition) {
-        if (condition.equals("successfully")){
-            Assert.assertFalse(registerPage.addressInput.isDisplayed());
-        }else {
-            Assert.assertTrue(registerPage.addressInput.isDisplayed());
+        boolean isSuccess = ReusableMethods.isToastSuccess(registerPage.bySuccessMessage);
+       if (condition.equals("successfully")) {
+            Assert.assertTrue(isSuccess);
+        } else {
+            Assert.assertFalse(isSuccess);
         }
     }
+
     @Then("delete registrant")
     public void delete_registrant() {
-
+        DatabaseUtility.createConnection();
+        DatabaseUtility.execute("DELETE FROM tpaccount_registration WHERE ssn ='" + registrant.getSsn() + "'");
+        DatabaseUtility.closeConnection();
     }
 
     @And("Register with {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string}")
@@ -96,5 +114,6 @@ public class Registration {
         registerPage.emailInput.sendKeys(email);
         registerPage.firstNameInput.sendKeys(firstPassword);
         registerPage.secondPasswordInput.sendKeys(secondPassword);
+
     }
 }
