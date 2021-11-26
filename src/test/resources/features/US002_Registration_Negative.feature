@@ -19,6 +19,7 @@ Feature: Registration Negative Scenario
   Scenario Outline: Register with invalid fields
     And Register with "<ssn>" and "<firstname>" and "<lastname>" and "<address>" and "<mobilephone>" and "<username>" and "<email>" and "<firstPassword>" and "<secondPassword>"
     Then Click on register
+    And verify registered "unsuccessfully"
 
     Examples:
       | ssn         | firstname | lastname | address | mobilephone  | username     | email           | firstPassword | secondPassword |
@@ -29,4 +30,3 @@ Feature: Registration Negative Scenario
       | 700-54-7402 | claire    |          | antalya | 505.123.0000 | claireblack  | c123b@gmail.com | C123b         | C123b          |
       | 700-54-7402 |           |          | antalya | 505.123.0000 | claireblack  | c123b@gmail.com | C123b         | C123b          |
       | 000-54-7402 | claire    |          | antalya | 505.123.0000 | claireblack  | c123b@gmail.com | C123b         | C123b          |
-    And verify registered "unsuccessfully"
