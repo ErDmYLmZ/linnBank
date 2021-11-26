@@ -71,13 +71,4 @@ public class ManageAccountStepDef {
 
  //   }
 
-
-    @Then("Close the application")
-    public void close_the_application() {
-        Driver.closeDriver();
-
-    }
-
-
-
 }
