@@ -2,13 +2,13 @@ package com.linnbank.pages;
 
 
 import com.linnbank.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MainPage {
     public MainPage() {
-
         PageFactory.initElements(Driver.getDriver(), this);}
 
     @FindBy(xpath = "(//a[@class='dropdown-toggle nav-link'])[2]")
@@ -65,7 +65,7 @@ public class MainPage {
     @FindBy(xpath = "//span[text()='Sign out']")
     public WebElement signOut;
 
-
+    public By bySuccessMessage = By.xpath("//div[contains(@class, 'toast--success')]");
 
 }
 

@@ -1,9 +1,12 @@
 package com.linnbank.pages;
 
 import com.linnbank.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class RegisterPage {
 
@@ -43,4 +46,8 @@ public class RegisterPage {
 
     @FindBy(id = "register-submit")
     public WebElement submitRegisterButton;
+
+    @FindBy(xpath = "//ul[@id='strengthBar']//li")
+    public List<WebElement> strengthBarList;
+
 }

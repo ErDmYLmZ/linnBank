@@ -1,5 +1,7 @@
 package com.linnbank.pojos;
 
+import com.github.javafaker.Faker;
+
 public class Registrant {
 
 
@@ -11,6 +13,19 @@ public class Registrant {
     private String userName;
     private String email;
     private String password;
+
+    private static final Faker faker = new Faker();
+
+    public Registrant(){
+        this.ssn = faker.idNumber().ssnValid();
+        this.address = faker.address().fullAddress();
+        this.email = faker.internet().emailAddress();
+        this.firstName = faker.name().firstName();
+        this.lastName = faker.name().lastName();
+        this.password = faker.internet().password();
+        this.phoneNumber = faker.phoneNumber().phoneNumber();
+        this.userName = faker.name().username();
+    }
 
     public String getSsn() {
         return ssn;
