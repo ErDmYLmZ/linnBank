@@ -1,6 +1,7 @@
 package com.linnbank.stepdef;
 
 import com.github.javafaker.Faker;
+import com.linnbank.pages.MainPage;
 import com.linnbank.pages.RegisterPage;
 import com.linnbank.pojos.Registrant;
 import com.linnbank.utilities.ConfigReader;
@@ -16,8 +17,9 @@ import org.openqa.selenium.WebElement;
 
 import javax.xml.crypto.Data;
 
-public class Registration {
+public class Registration{
     Faker faker = new Faker();
+    MainPage mainPage = new MainPage();
     RegisterPage registerPage = new RegisterPage();
     Registrant registrant = new Registrant();
 
@@ -88,7 +90,7 @@ public class Registration {
 
     @Then("verify registered {string}")
     public void verify_registered(String condition) {
-        boolean isSuccess = ReusableMethods.isToastSuccess(registerPage.bySuccessMessage);
+        boolean isSuccess = ReusableMethods.isToastSuccess(mainPage.bySuccessMessage);
        if (condition.equals("successfully")) {
             Assert.assertTrue(isSuccess);
         } else {
