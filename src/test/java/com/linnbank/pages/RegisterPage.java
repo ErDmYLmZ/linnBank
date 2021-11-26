@@ -50,6 +50,4 @@ public class RegisterPage {
     @FindBy(xpath = "//ul[@id='strengthBar']//li")
     public List<WebElement> strengthBarList;
 
-    public By bySuccessMessage = By.xpath("//div[contains(@class, 'toast--success')]");
-
 }
