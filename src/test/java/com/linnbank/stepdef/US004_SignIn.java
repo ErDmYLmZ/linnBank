@@ -77,10 +77,10 @@ public class US004_SignIn {
         signInPage.login(user, pwd);
         Assert.assertTrue(mainPage.myOperations.isDisplayed());
     }
-
-    @Then("close the application")
+    @Then("Close the application")
     public void close_the_application() {
         Driver.closeDriver();
+
     }
 
 }

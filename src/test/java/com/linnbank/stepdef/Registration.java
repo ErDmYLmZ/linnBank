@@ -2,6 +2,7 @@ package com.linnbank.stepdef;
 
 import com.github.javafaker.Faker;
 import com.linnbank.pages.RegisterPage;
+import com.linnbank.pojos.Registrant;
 import com.linnbank.utilities.ConfigReader;
 import com.linnbank.utilities.DatabaseUtility;
 import com.linnbank.utilities.ReusableMethods;
@@ -15,23 +16,24 @@ import javax.xml.crypto.Data;
 public class Registration {
     Faker faker = new Faker();
     RegisterPage registerPage=new RegisterPage();
-    String ssn = faker.idNumber().ssnValid();
+    Registrant registrant = new Registrant();
     @Given("Enter {string} {string}")
-    public void enter(String type, String field) {
+    public void addRegistrant(String type, String field) {
         if (type.equals("valid")){
+
             switch (field){
+
                 case "ssn":
-                    registerPage.ssnInput.sendKeys(ssn);
-                    System.out.println(ssn);
+                    registerPage.ssnInput.sendKeys(registrant.getSsn());
                     break;
                 case "firstname":
-                    registerPage.firstNameInput.sendKeys(faker.name().firstName());
+                    registerPage.firstNameInput.sendKeys(registrant.getFirstName());
                     break;
                 case "lastname":
-                    registerPage.lastNameInput.sendKeys(faker.name().lastName());
+                    registerPage.lastNameInput.sendKeys(registrant.getLastName());
                     break;
                 case "address":
-                    registerPage.addressInput.sendKeys(faker.address().fullAddress());
+                    registerPage.addressInput.sendKeys(registrant.getAddress());
                     break;
                 case "mobilephone":
                     registerPage.phoneInput.sendKeys(faker.phoneNumber().cellPhone());
@@ -50,7 +52,9 @@ public class Registration {
                     break;
             }
         }else if(type.equals("invalid")){
+
             switch (field){
+
                 case "ssn":
                     registerPage.ssnInput.sendKeys(faker.idNumber().invalidSvSeSsn());
                     break;
@@ -90,8 +94,10 @@ public class Registration {
     @Then("delete registrant")
     public void delete_registrant() {
         DatabaseUtility.createConnection();
-        System.out.println("DELETE FROM tpaccount_registration WHERE ssn ='" + ssn + "'");
-        DatabaseUtility.executeUpdate("DELETE FROM tpaccount_registration WHERE ssn ='" + ssn + "'");
+        DatabaseUtility.executeUpdate("" +
+                "DELETE FROM tpaccount_registration " +
+                "WHERE ssn ='" + "" + "'");
+        DatabaseUtility.closeConnection();
     }
 
     @And("Register with {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string} and {string}")
@@ -105,8 +111,6 @@ public class Registration {
         registerPage.emailInput.sendKeys(email);
         registerPage.firstNameInput.sendKeys(firstPassword);
         registerPage.secondPasswordInput.sendKeys(secondPassword);
-
-
 
     }
 }
