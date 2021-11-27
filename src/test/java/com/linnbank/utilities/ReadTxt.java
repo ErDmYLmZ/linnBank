@@ -39,8 +39,6 @@ public class ReadTxt {
         return all;
     }
 
-
-
     public static List<Customer> returnCustomerSNN(String filePath){
         List<Customer>all = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -297,11 +295,7 @@ public class ReadTxt {
         return all;
     }
 
-
-
     public static List<Registrant> returnAWholeRegistrant(String filePath){
-
-
         List<Registrant>all = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line = br.readLine();
