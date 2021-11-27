@@ -18,7 +18,7 @@ public class ManageCustomersPage {
     @FindBy(id="jh-create-entity")
     public WebElement createNewCustomerButton;
 
-    @FindBy(xpath="//table/tbody/tr/td[1]/a ")
+    @FindBy(xpath="//table/tbody/tr/td[1]/a")
     public List<WebElement> allIDColumn;
 
     @FindBy(xpath="//table/tbody/tr/td[2]")
@@ -128,4 +128,15 @@ public class ManageCustomersPage {
 
     @FindBy(xpath = "//*[contains(@class,'Toastify__toast-body')]")
     public WebElement popupMessage;
+
+    @FindBy(xpath = "//h2/b")
+    public WebElement customerViewId;
+
+    @FindBy(id = "gmibankfrontendApp.tPCustomer.delete.question")
+    public WebElement deletePopUpMessage;
+
+    @FindBy(id = "jhi-confirm-delete-tPCustomer")
+    public WebElement confirmDeleteButton;
+
+
 }
