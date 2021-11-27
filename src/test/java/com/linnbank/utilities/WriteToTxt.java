@@ -226,15 +226,10 @@ public class WriteToTxt {
     public static void saveRegistrantData(String fileName, Registrant registrant)  {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
-
-
             writer.append(registrant.getPassword()+","+ registrant.getUserName()+",");
             writer.append(registrant.getFirstName()+","+ registrant.getLastName()+",");
             writer.append(registrant.getSsn()+","+ registrant.getPhoneNumber()+",");
             writer.append(registrant.getAddress()+","+ registrant.getEmail()+",\n");
-
-
-
             writer.close();
         } catch(Exception e){
 

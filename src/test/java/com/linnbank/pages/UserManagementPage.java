@@ -19,7 +19,7 @@ public class UserManagementPage {
     @FindBy(xpath = "//table/tbody/tr/td[2]")
     public List<WebElement> allUsers;
 
-    @FindBy(xpath = "//table/tbody/tr/td[4]")
+    @FindBy(xpath = "//table/tbody/tr/td[4]/button")
     public List<WebElement> allActivations;
 
     @FindBy(xpath = "//span[text()='Delete']")

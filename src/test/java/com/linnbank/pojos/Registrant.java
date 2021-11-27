@@ -25,6 +25,7 @@ public class Registrant {
         this.password = faker.internet().password();
         this.phoneNumber = faker.phoneNumber().phoneNumber();
         this.userName = faker.name().username();
+        this.password = faker.internet().password(7,12,true,true,true);
     }
 
     public String getSsn() {

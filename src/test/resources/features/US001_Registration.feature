@@ -16,4 +16,5 @@ Feature: US001 Registration
     And Enter "valid" "secondPassword"
     Then Click on register
     And verify registered "successfully"
-    And delete registrant
+    And activate "user"
+#    And delete registrant
