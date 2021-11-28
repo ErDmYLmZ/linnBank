@@ -10,7 +10,23 @@ public class UserSettingsPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-   @FindBy(id="firstName")
+    @FindBy (id="account-menu")
+    public WebElement signIn_Register;
+
+    @FindBy(linkText = "Sign in")
+    public WebElement SignIn_Dropdown;
+
+    @FindBy(id = "username")
+    public WebElement username;
+
+    @FindBy(id = "password")
+    public WebElement password;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement submit;
+
+
+    @FindBy(id="firstName")
     public WebElement firstName;
 
     @FindBy(id="lastName")
