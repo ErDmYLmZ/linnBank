@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class ReusableMethods {
 
@@ -202,5 +203,9 @@ public class ReusableMethods {
             // e.getMessage();
         }
         return false;
+    }
+
+    public static List<String> convertWebElementListToStringList(List<WebElement> list){
+        return list.stream().map(t -> t.getAttribute("innerText")).collect(Collectors.toList());
     }
 }
