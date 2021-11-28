@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
 //                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 //        },
         features = "./src/test/resources/features",
-        glue = "stepdef",
-        tags = "@register",
+        glue = "com/linnbank/stepdef",
+        tags = "@user_Settings_test",
         dryRun = false,
         monochrome = true
 )
