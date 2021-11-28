@@ -42,13 +42,11 @@ public class US006_User_Settings_StepDefs {
         userSettingsPage.firstName.clear();
         userSettingsPage.firstName.sendKeys(faker.name().firstName());
 
-
     }
     @Given("user edits lastnamebox")
     public void user_edits_lastnamebox() {
         userSettingsPage.lastName.clear();
         userSettingsPage.lastName.sendKeys(faker.name().lastName());
-
     }
     @Given("user edits emailbox")
     public void user_edits_emailbox() {
@@ -58,8 +56,9 @@ public class US006_User_Settings_StepDefs {
     @Given("user chooses {string} or {string}")
     public void user_chooses_and(String string, String string2) {
         Select select = new Select(userSettingsPage.languageDropDown);
-        select.selectByValue("tr");
-
+        if (select.equals("en")) {
+           select.selectByValue("tr");
+            }
     }
     @Given("user save the info")
     public void user_save_the_info() {
