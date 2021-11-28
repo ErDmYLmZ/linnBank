@@ -20,24 +20,18 @@ public class Hooks {
     I designed my hooks as it takes screenshot when a test scenario fails.
 */
 
-//    @Before
-//    public void setUp(){
-//
-//    }
-//
+    @Before
+    public void setUp() {
+
+    }
+
 //    @After
 //    public void tearDown(Scenario scenario) throws IOException {
-//
-//        final byte[] screenshot =  ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-//
-//        if(scenario.isFailed()){
+//        final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+//        if (scenario.isFailed()) {
 //            String failed = ReusableMethods.getScreenshot("failed screenshot");
 //            scenario.attach(screenshot, "image/png", "screenshot");
 //        }
 //        Driver.closeDriver();
-//
 //    }
-
-
-
 }

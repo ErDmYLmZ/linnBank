@@ -62,13 +62,17 @@ public class US004_SignIn {
                 mainPage.accountMenu.click();
                 mainPage.userInfo.click();
                 break;
-        }
+            case "Sign in":
+                mainPage.accountMenu.click();
+                mainPage.signIn.click();
+                break;        }
     }
 
     @Given("Sign Out")
     public void sign_out() {
         mainPage.accountMenu.click();
         mainPage.signOut.click();
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("logout"));
     }
 
     @And("login with {string} and {string}")
@@ -77,10 +81,9 @@ public class US004_SignIn {
         signInPage.login(user, pwd);
         Assert.assertTrue(mainPage.myOperations.isDisplayed());
     }
-    @Then("Close the application")
+    @Then("close the application")
     public void close_the_application() {
         Driver.closeDriver();
-
     }
 
 }
