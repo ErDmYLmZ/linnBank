@@ -23,8 +23,7 @@ public class UserSettingsPage {
     @FindBy(id = "password")
     public WebElement password;
 
-    @FindBy(xpath = "//button[@type='submit']")
-    public WebElement submit;
+
 
 
     @FindBy(id="firstName")
@@ -38,6 +37,10 @@ public class UserSettingsPage {
 
     @FindBy(id="langKey")
     public WebElement languageDropDown;
+
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement submit;
 
 
 
