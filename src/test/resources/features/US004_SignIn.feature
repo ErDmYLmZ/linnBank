@@ -1,16 +1,15 @@
 Feature: US004
 
-#  Background: Navigate to related page
-#    Given "unregistered" is on the "Register" page
-
-  @login_test
+  @SignIn
   Scenario: There should be a valid username and password validating the success message to login
+    Given "unregistered" is on the "Sign in" page
     And login with "user6thgen" and "Aa12345!"
-    And close the application
+    And Sign Out
 
   Scenario Outline: Login the application
+    Given "unregistered" is on the "Sign in" page
     And login with "<username>" and "<password>"
-    And close the application
+    And Sign Out
 
     Examples: credentials
       | username       | password |
@@ -21,16 +20,17 @@ Feature: US004
 
   Scenario Outline: Navigate to page with specified role
     Given "<role>" is on the "<page>" page
-    And Sign Out
+#    And Sign Out
     Examples:
       | role         | page             |
-      | user         | User Info        |
-      | user         | Password         |
-      | admin        | User Management  |
-      | manager      | Manage Customers |
-      | manager      | Manage Accounts  |
+#      | user         | User Info        |
+#      | user         | Password         |
+#      | admin        | User Management  |
+#      | manager      | Manage Customers |
+#      | manager      | Manage Accounts  |
       | employee     | Manage Customers |
-      | employee     | Manage Accounts  |
-      | customer     | My Accounts      |
-      | customer     | Transfer Money   |
-      | unregistered | Register         |
+#      | employee     | Manage Accounts  |
+#      | customer     | My Accounts      |
+#      | customer     | Transfer Money   |
+#      | unregistered | Register         |
+#      | unregistered | Sign in          |
