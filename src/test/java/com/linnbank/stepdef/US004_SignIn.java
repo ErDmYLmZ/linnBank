@@ -1,6 +1,7 @@
 package com.linnbank.stepdef;
 import com.linnbank.pages.MainPage;
 import com.linnbank.pages.SignInPage;
+import com.linnbank.pojos.Container;
 import com.linnbank.utilities.ConfigReader;
 import com.linnbank.utilities.Driver;
 import io.cucumber.java.en.And;
@@ -25,8 +26,13 @@ public class US004_SignIn {
         if (!role.equals("unregistered")) {
             mainPage.accountMenu.click();
             mainPage.signIn.click();
-            signInPage.login(ConfigReader.getProperty(role + "Role"),
-                    ConfigReader.getProperty(role + "Password"));
+            if (!role.equals("user")) {
+                signInPage.login(ConfigReader.getProperty(role + "Role"),
+                        ConfigReader.getProperty(role + "Password"));
+            } else {
+                signInPage.login(Container.registrant.getUserName(),
+                        Container.registrant.getPassword());
+            }
         }
 
         switch (page) {
@@ -65,7 +71,8 @@ public class US004_SignIn {
             case "Sign in":
                 mainPage.accountMenu.click();
                 mainPage.signIn.click();
-                break;        }
+                break;
+        }
     }
 
     @Given("Sign Out")
@@ -81,6 +88,7 @@ public class US004_SignIn {
         signInPage.login(user, pwd);
         Assert.assertTrue(mainPage.myOperations.isDisplayed());
     }
+
     @Then("close the application")
     public void close_the_application() {
         Driver.closeDriver();
