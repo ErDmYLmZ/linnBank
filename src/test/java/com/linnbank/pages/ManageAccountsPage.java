@@ -2,9 +2,12 @@ package com.linnbank.pages;
 
 import com.linnbank.utilities.Driver;
 import io.reactivex.rxjava3.internal.fuseable.QueueFuseable;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class ManageAccountsPage {
     public ManageAccountsPage() {
@@ -52,6 +55,9 @@ public class ManageAccountsPage {
 
     @FindBy(id = "jh-create-entity")
     public WebElement createAnewAccountButton;
+
+    @FindBy(xpath = "//form[@method='get']")
+    public List<WebElement> allPom;
 
 
 }
