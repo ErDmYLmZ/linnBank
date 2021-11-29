@@ -20,6 +20,15 @@ public class SignInPage {
     @FindBy(css = "button[type='submit']")
     public WebElement submit;
 
+    @FindBy(xpath = "//div[@class='alert alert-danger fade show']")
+    public WebElement errorMessage;
+
+    @FindBy(linkText = "Register a new account")
+    public WebElement registerLink;
+
+    @FindBy(linkText = "Did you forget your password?")
+    public WebElement forgetPassword;
+
     public void login(String user, String pwd) {
         username.sendKeys(user);
         password.sendKeys(pwd);
