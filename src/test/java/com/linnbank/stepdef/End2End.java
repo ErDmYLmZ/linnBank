@@ -2,6 +2,7 @@ package com.linnbank.stepdef;
 
 import com.github.javafaker.Faker;
 import com.linnbank.pages.ManageCustomersPage;
+import com.linnbank.pojos.Container;
 import com.linnbank.pojos.Registrant;
 import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.en.And;
@@ -23,9 +24,9 @@ public class End2End {
 
     @And("user search SSN,")
     public void userSearchSSN() {
-        List<Registrant> registrants = returnAWholeRegistrant("src/test/resources/testdata/Registrant.txt");
-        String ssn = registrants.stream().reduce((a,b)->b).get().getSsn();
-        manageCustomersPage.ssnSearchField.sendKeys(ssn);
+//        List<Registrant> registrants = returnAWholeRegistrant("src/test/resources/testdata/Registrant.txt");
+//        String ssn = registrants.stream().reduce((a,b)->b).get().getSsn();
+        manageCustomersPage.ssnSearchField.sendKeys(Container.registrant.getSsn());
         manageCustomersPage.searchButton.click();
     }
 

@@ -3,6 +3,7 @@ package com.linnbank.stepdef;
 import com.github.javafaker.Faker;
 import com.linnbank.pages.MainPage;
 import com.linnbank.pages.RegisterPage;
+import com.linnbank.pojos.Container;
 import com.linnbank.pojos.Registrant;
 import com.linnbank.utilities.*;
 import io.cucumber.java.en.And;
@@ -90,7 +91,8 @@ public class Registration{
         boolean isSuccess = ReusableMethods.isToastSuccess(mainPage.bySuccessMessage);
        if (condition.equals("successfully")) {
             Assert.assertTrue(isSuccess);
-           WriteToTxt.saveRegistrantData("src/test/resources/testdata/Registrant.txt",registrant);
+            Container.registrant = registrant;
+            WriteToTxt.saveRegistrantData("src/test/resources/testdata/Registrant.txt",registrant);
         } else {
             Assert.assertFalse(isSuccess);
         }
