@@ -1,8 +1,11 @@
 package com.linnbank.stepdef;
 import com.linnbank.pages.MainPage;
+import com.linnbank.pages.PasswordPage;
+import com.linnbank.pages.RegisterPage;
 import com.linnbank.pages.SignInPage;
 import com.linnbank.utilities.ConfigReader;
 import com.linnbank.utilities.Driver;
+import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,6 +17,7 @@ public class US004_SignIn {
 
     static MainPage mainPage;
     static SignInPage signInPage;
+
 
     @Given("{string} is on the {string} page")
     public static void user_is_on_the_page(String role, String page) {
@@ -81,6 +85,48 @@ public class US004_SignIn {
         signInPage.login(user, pwd);
         Assert.assertTrue(mainPage.myOperations.isDisplayed());
     }
+
+    @Given("do login with {string} and {string}")
+    public void do_login_with_and(String user, String pwd) {
+        signInPage = new SignInPage();
+        signInPage.login(user, pwd);
+    }
+
+    @Given("verify if there is an error message")
+    public void verify_if_there_is_an_error_message() {
+        Assert.assertTrue(signInPage.errorMessage.isDisplayed());
+    }
+
+
+    @Given("navigate to {string} page")
+    public void navigate_to_page(String page) {
+        switch (page) {
+            case "registration" :
+                signInPage.registerLink.click();
+                break;
+
+            case "forgetPassword" :
+                signInPage.forgetPassword.click();
+                break;
+        }
+    }
+
+    @Given("verify if it reaches to the {string} page")
+    public void verify_if_it_reaches_to_the_page(String page) throws InterruptedException {
+        RegisterPage registerPage = new RegisterPage();
+        PasswordPage passwordPage = new PasswordPage();
+
+        switch (page) {
+            case "registration" :
+                Assert.assertTrue(registerPage.registerTitle.isDisplayed());
+                break;
+
+            case "forgetPassword" :
+                Assert.assertTrue(passwordPage.resetTitle.isDisplayed());
+                break;
+        }
+    }
+
     @Then("close the application")
     public void close_the_application() {
         Driver.closeDriver();
