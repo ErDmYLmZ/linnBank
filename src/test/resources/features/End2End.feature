@@ -1,10 +1,8 @@
-Feature: US001 Registration
+Feature: End2End
 
-  Background:
+  @regression
+  Scenario: Register with valid fields 1
     Given "unregistered" is on the "Register" page
-
-  @register
-  Scenario: Register with valid fields
     And Enter "valid" "ssn"
     And Enter "valid" "firstname"
     And Enter "valid" "lastname"
@@ -17,4 +15,11 @@ Feature: US001 Registration
     Then Click on register
     And verify registered "successfully"
     And activate "user"
-#    And delete registrant
+
+  Scenario: Add customer
+    Given "employee" is on the "Manage Customers" page
+    Then user creates a customer
+    And user search SSN,
+    And user enter middleInitial, zipcode, city, country,
+    And employee chooses two accounts from account section 1 and 5
+    And employee clicks on Save button

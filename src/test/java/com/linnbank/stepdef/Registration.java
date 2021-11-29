@@ -4,10 +4,7 @@ import com.github.javafaker.Faker;
 import com.linnbank.pages.MainPage;
 import com.linnbank.pages.RegisterPage;
 import com.linnbank.pojos.Registrant;
-import com.linnbank.utilities.ConfigReader;
-import com.linnbank.utilities.DatabaseUtility;
-import com.linnbank.utilities.Driver;
-import com.linnbank.utilities.ReusableMethods;
+import com.linnbank.utilities.*;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -42,19 +39,19 @@ public class Registration{
                     registerPage.addressInput.sendKeys(registrant.getAddress());
                     break;
                 case "mobilephone":
-                    registerPage.phoneInput.sendKeys(faker.phoneNumber().cellPhone());
+                    registerPage.phoneInput.sendKeys(registrant.getPhoneNumber());
                     break;
                 case "username":
-                    registerPage.usernameInput.sendKeys(faker.name().username());
+                    registerPage.usernameInput.sendKeys(registrant.getUserName());
                     break;
                 case "email":
-                    registerPage.emailInput.sendKeys(faker.internet().emailAddress());
+                    registerPage.emailInput.sendKeys(registrant.getEmail());
                     break;
                 case "firstPassword":
-                    registerPage.firstPasswordInput.sendKeys(ConfigReader.getProperty("userPassword"));
+                    registerPage.firstPasswordInput.sendKeys(registrant.getPassword());
                     break;
                 case "secondPassword":
-                    registerPage.secondPasswordInput.sendKeys(ConfigReader.getProperty("userPassword"));
+                    registerPage.secondPasswordInput.sendKeys(registrant.getPassword());
                     break;
             }
         } else if (type.equals("invalid")) {
@@ -93,6 +90,7 @@ public class Registration{
         boolean isSuccess = ReusableMethods.isToastSuccess(mainPage.bySuccessMessage);
        if (condition.equals("successfully")) {
             Assert.assertTrue(isSuccess);
+           WriteToTxt.saveRegistrantData("src/test/resources/testdata/Registrant.txt",registrant);
         } else {
             Assert.assertFalse(isSuccess);
         }
@@ -118,4 +116,5 @@ public class Registration{
         registerPage.secondPasswordInput.sendKeys(secondPassword);
 
     }
+
 }

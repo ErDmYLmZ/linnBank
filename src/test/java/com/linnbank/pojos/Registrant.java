@@ -22,9 +22,10 @@ public class Registrant {
         this.email = faker.internet().emailAddress();
         this.firstName = faker.name().firstName();
         this.lastName = faker.name().lastName();
-        this.password = faker.internet().password();
+        this.password = faker.internet().password()+"!";
         this.phoneNumber = faker.phoneNumber().phoneNumber();
         this.userName = faker.name().username();
+        this.password = faker.internet().password(8,12,true,true,true).replaceAll("@","!")+"!";
     }
 
     public String getSsn() {
