@@ -1,6 +1,8 @@
 package com.linnbank.utilities;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class DateUtil {
@@ -29,6 +31,14 @@ public class DateUtil {
         String today = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
         return today;
     }
+
+    // dd/MM/yyyy HH:mm a   --> 25/11/2021 03:45 AM
+    public static String getManipulatedDate(int day, int month, int year) {
+        LocalDateTime curentDateTime = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
+        return dtf.format(curentDateTime.plusYears(year).plusMonths(month).plusDays(day));
+    }
+
 }
 
 
