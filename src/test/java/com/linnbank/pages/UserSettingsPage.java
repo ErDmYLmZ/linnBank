@@ -4,6 +4,7 @@ import com.linnbank.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class UserSettingsPage {
     public UserSettingsPage() {
@@ -22,8 +23,7 @@ public class UserSettingsPage {
     @FindBy(id = "password")
     public WebElement password;
 
-    @FindBy(xpath = "//button[@type='submit']")
-    public WebElement submit;
+
 
 
     @FindBy(id="firstName")
@@ -36,7 +36,13 @@ public class UserSettingsPage {
     public WebElement email;
 
     @FindBy(id="langKey")
-    public WebElement LanguageDropDown;
+    public WebElement languageDropDown;
+
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement submit;
+
+
 
 
 
