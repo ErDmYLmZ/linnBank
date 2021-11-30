@@ -14,6 +14,10 @@ Feature: End2End
     And Enter "valid" "secondPassword"
     Then Click on register
     And verify registered "successfully"
+    And Sign Out
+
+  Scenario: admin activates user
+    Given "admin" is on the "User Management" page
     And activate "user"
     And Sign Out
 
@@ -27,6 +31,9 @@ Feature: End2End
     And Sign Out
 
   Scenario: Transfer Money
+    Given "user" is on the "My Accounts" page
+    And retrieve account data
+    Then Sign Out
     Given "user" is on the "Transfer Money" page
     And customer choose first account to transfer money from
     And customer choose second account to transfer money to
@@ -34,4 +41,12 @@ Feature: End2End
     And customer enters the description
     And customer clicks on make transfer button
     Then customer verify the success message
-    Then Sign Out
+    Then close the application
+
+#  @api
+#  Scenario: Read all customers
+#    Given user sets all response using api end point "https://www.gmibank.com/api/tp-customers"
+#    And user deserializes country data as json to java pojo
+#    Then user validates the data
+
+  
