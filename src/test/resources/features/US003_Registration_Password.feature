@@ -18,7 +18,7 @@ Feature: US003: Registration page should restrict password usage to a secure and
     And Click on New Password confirmation
     And Enter the same "ADMIN2021!" to verify
     Then User should see the chart level at the strongest "unsuccessfully"
-    And Close the application
+    And close the application
 
   @registration_password_lowercase_test
   Scenario: There should be at least 1 lowercase char for stronger password and see the level chart change accordingly
@@ -34,7 +34,7 @@ Feature: US003: Registration page should restrict password usage to a secure and
     And Click on New Password confirmation
     And Enter the same "aDMIN2021!" to verify
     Then User should see the chart level at the strongest "successfully"
-    And Close the application
+    And close the application
 
   @registration_password_uppercase_test
   Scenario: There should be at least 1 uppercase char for stronger password and see the level chart change accordingly
@@ -50,7 +50,7 @@ Feature: US003: Registration page should restrict password usage to a secure and
     And Click on New Password confirmation
     And Enter the same "admin021!" to verify
     Then User should see the chart level at the strongest "unsuccessfully"
-    And Close the application
+    And close the application
 
   @registration_password_uppercase_test
   Scenario: There should be at least 1 uppercase char for stronger password and see the level chart change accordingly
@@ -66,4 +66,4 @@ Feature: US003: Registration page should restrict password usage to a secure and
     And Click on New Password confirmation
     And Enter the same "Admin021!" to verify
     Then User should see the chart level at the strongest "successfully"
-    And Close the application
+    And close the application

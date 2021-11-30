@@ -92,7 +92,7 @@ public class Registration{
        if (condition.equals("successfully")) {
             Assert.assertTrue(isSuccess);
             Container.registrant = registrant;
-            WriteToTxt.saveRegistrantData("src/test/resources/testdata/Registrant.txt",registrant);
+//            WriteToTxt.saveRegistrantData("src/test/resources/testdata/Registrant.txt",registrant);
         } else {
             Assert.assertFalse(isSuccess);
         }
