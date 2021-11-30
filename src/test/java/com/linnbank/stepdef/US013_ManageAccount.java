@@ -27,14 +27,15 @@ public class US013_ManageAccount {
     }
     @And("user selects Account_Type")
     public void user_selects_account_type() {
-        Select select = new Select(manageAccountsPage.accountTypeDropDown);
-        select.getFirstSelectedOption().click();
+        Select selectAccountType = new Select(manageAccountsPage.accountTypeDropDown);
+        ReusableMethods.selectRandomTextFromDropdown(selectAccountType);
 
     }
     @And("user selects Account_Status_type")
     public void user_selects_account_status_type() {
-        Select select = new Select(manageAccountsPage.accountStatusDropDown);
-        select.getFirstSelectedOption().click();
+        Select selectAccountStatusType = new Select(manageAccountsPage.accountStatusDropDown);
+        ReusableMethods.selectRandomTextFromDropdown(selectAccountStatusType);
+
 
     }
     @And("user enters Balance {string}")
@@ -43,27 +44,50 @@ public class US013_ManageAccount {
        manageAccountsPage.balanceTextBox.sendKeys(balance);
     }
 
-    @And("user enters CreateDate {string}")
-    public void user_enters_create_date(String CreateDate) {
-        ReusableMethods.waitFor(1);
-       manageAccountsPage.createDate.sendKeys(CreateDate);
+    @And("user enters CreateDate")
+    public void user_enters_create_date() {
+        String crtDate = DateUtil.getManipulatedDate(0, 0, 0);
+        ReusableMethods.waitFor(2);
+       manageAccountsPage.createDate.sendKeys(crtDate);
+        System.out.println(crtDate);
+        ReusableMethods.waitFor(2);
     }
 
-    @And("user enters ClosedDate {string}")
-    public void user_enters_closed_date(String closedDate) {
-        ReusableMethods.waitFor(1);
-      manageAccountsPage.closeDate.sendKeys(closedDate);
+    @And("user enters ClosedDate")
+    public void user_enters_closed_date() {
+        String clsDate = DateUtil.getManipulatedDate(5, 0, 0);
+        ReusableMethods.waitFor(2);
+        manageAccountsPage.closeDate.sendKeys(clsDate);
+        System.out.println(clsDate);
+        ReusableMethods.waitFor(2);
+    }
+    @And("user enters an early CreateDate")
+    public void userEntersAnEarlyCreateDate() {
+        String earlyCrtDate = DateUtil.getManipulatedDate(10, 1, 0);
+        ReusableMethods.waitFor(2);
+        manageAccountsPage.createDate.sendKeys(earlyCrtDate);
+        System.out.println(earlyCrtDate);
+        ReusableMethods.waitFor(2);
+    }
+    @And("user enters early ClosedDate")
+    public void userEntersEarlyClosedDate() {
+        String earlyClsDate = DateUtil.getManipulatedDate(-5, -1, -1);
+        ReusableMethods.waitFor(2);
+        manageAccountsPage.closeDate.sendKeys(earlyClsDate);
+        System.out.println(earlyClsDate);
+        ReusableMethods.waitFor(2);
     }
 
     @When("user clicks on the save button")
     public void user_clicks_on_the_save_button() {
+        ReusableMethods.waitFor(5);
         manageAccountsPage.saveButton.click();
 
     }
+
     @Then("verify no error_message is displayed on Description field")
     public void verify_no_is_displayed_on_description_field() {
-        boolean descriptionErrorMsg = manageAccountsPage.descriptionTextBox.getAttribute("class").contains("invalid");
-        Assert.assertFalse(descriptionErrorMsg);
+        ReusableMethods.assertByAttribute(manageAccountsPage.descriptionTextBox);
     }
     @Then("the error_message should be displayed on Balance field")
     public void verify_no_is_displayed_on_balance_field() {
@@ -107,8 +131,5 @@ public class US013_ManageAccount {
     }
 
 
-    @And("user enters CreateDate")
-    public void userEntersCreateDate() {
-        DateUtil.todaysDate().
-    }
+
 }

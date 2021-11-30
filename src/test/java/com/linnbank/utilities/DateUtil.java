@@ -1,6 +1,9 @@
 package com.linnbank.utilities;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class DateUtil {
@@ -28,6 +31,32 @@ public class DateUtil {
     public static String todaysDate4(){
         String today = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
         return today;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    public static String getManipulatedDate(int day, int month, int year ) {
+        LocalDateTime manipulatedDate = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm a");
+        return dtf.format(manipulatedDate.plusDays(day).plusMonths(month).plusYears(year));
+
+
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(DateUtil.getManipulatedDate(10, -10, -100));
+
+
     }
 }
 

@@ -11,15 +11,14 @@ Feature: Create_A_New_Account
       And user selects Account_Status_type
       And user enters Balance "<Balance>"
       And user enters CreateDate
-#      And user enters CreateDate "<Create_Date>"
-      And user enters ClosedDate "<Closed_date>"
+      And user enters ClosedDate
       When user clicks on the save button
       Then verify no error_message is displayed on Description field
       And Close the application
 
       Examples: Test Data
-        | Description             | Balance | Create_Date       | Closed_date       |
-        | New Account_6thGenQA_01 |  1000   | 11/25/2021, 12:00 | 11/25/2022, 11:00 |
+        | Description             | Balance |
+        | New Account_6thGenQA_01 |  1000   |
 
 
     @manage_account_descriptionBox_negative_Test
@@ -28,15 +27,15 @@ Feature: Create_A_New_Account
       And user selects Account_Type
       And user selects Account_Status_type
       And user enters Balance "<Balance>"
-      And user enters CreateDate "<Create_Date>"
-      And user enters ClosedDate "<Closed_date>"
+      And user enters CreateDate
+      And user enters ClosedDate
       When user clicks on the save button
       Then verify the error_message is displayed on Description field
       And Close the application
 
       Examples: Test Data
-        | Description             | Balance | Create_Date       | Closed_date       |
-        |                         | 2000    | 11/25/2021, 12:00 | 11/25/2022, 11:00 |
+        | Description             | Balance |
+        |                         | 2000    |
 
     @manage_account_balance_negative_Test
     Scenario Outline:Create_A_New_Account_With_Invalid_Balance
@@ -44,15 +43,15 @@ Feature: Create_A_New_Account
       And user selects Account_Type
       And user selects Account_Status_type
       And user enters Balance "<Balance>"
-      And user enters CreateDate "<Create_Date>"
-      And user enters ClosedDate "<Closed_date>"
+      And user enters CreateDate
+      And user enters ClosedDate
       When user clicks on the save button
       Then verify the error_message is displayed on Balance field
       And Close the application
 
       Examples: Test Data
-        | Description             | Balance | Create_Date       | Closed_date       |
-        | New Account_6thGenQA_02 | ?/\][;- | 11/25/2021, 12:00 | 11/25/2022, 11:00 |
+        | Description             | Balance |
+        | New Account_6thGenQA_02 | ?/\][;- |
 
   @manage_account_balance_negative_Test_2
   Scenario Outline:Create_A_New_Account_With_Invalid_Balance_2
@@ -60,16 +59,16 @@ Feature: Create_A_New_Account
     And user selects Account_Type
     And user selects Account_Status_type
     And user enters Balance "<Balance>"
-    And user enters CreateDate "<Create_Date>"
-    And user enters ClosedDate "<Closed_date>"
+    And user enters CreateDate
+    And user enters ClosedDate
     When user clicks on the save button
     Then the error_message should be displayed on Balance field
     And Close the application
 
     Examples: Test Data
-      | Description             | Balance | Create_Date       | Closed_date       |
-      | New Account_6thGenQA_03 | 0       | 11/25/2021, 12:00 | 11/25/2022, 11:00 |
-      | New Account_6thGenQA_04 | -1000   | 11/25/2021, 12:00 | 11/25/2022, 11:00 |
+      | Description             | Balance |
+      | New Account_6thGenQA_03 | 0       |
+      | New Account_6thGenQA_04 | -1000   |
 
     @manage_account_CreateDate_negative_Test
     Scenario Outline:Create_A_New_Account_With_Early_CreateDate
@@ -77,15 +76,15 @@ Feature: Create_A_New_Account
       And user selects Account_Type
       And user selects Account_Status_type
       And user enters Balance "<Balance>"
-      And user enters CreateDate "<Create_Date>"
-      And user enters ClosedDate "<Closed_date>"
+      And user enters an early CreateDate
+      And user enters ClosedDate
       When user clicks on the save button
       Then the error_message should be displayed on Create_date field
       And Close the application
 
       Examples: Test Data
-        | Description             | Balance | Create_Date       | Closed_date       |
-        | New Account_6thGenQA_05 | 3000    | 11/25/2020, 12:00 | 11/25/2022, 11:00 |
+        | Description             | Balance |
+        | New Account_6thGenQA_05 | 3000    |
 
     @manage_account_ClosedDate_negative_Test
     Scenario Outline:Create_A_New_Account_With_Early_ClosedDate
@@ -93,12 +92,12 @@ Feature: Create_A_New_Account
       And user selects Account_Type
       And user selects Account_Status_type
       And user enters Balance "<Balance>"
-      And user enters CreateDate "<Create_Date>"
-      And user enters ClosedDate "<Closed_date>"
+      And user enters CreateDate
+      And user enters early ClosedDate
       When user clicks on the save button
       Then the error_message should be displayed on Closed_date field
       And Close the application
 
       Examples: Test Data
-        | Description             | Balance | Create_Date       | Closed_date       |
-        | New Account_6thGenQA_06 | 4000    | 11/25/2021, 12:00 | 11/25/2020, 11:00 |
+        | Description             | Balance |
+        | New Account_6thGenQA_06 | 4000    |
