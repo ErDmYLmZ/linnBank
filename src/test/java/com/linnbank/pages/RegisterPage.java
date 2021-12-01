@@ -50,4 +50,7 @@ public class RegisterPage {
     @FindBy(xpath = "//ul[@id='strengthBar']//li")
     public List<WebElement> strengthBarList;
 
+    @FindBy(id = "register-title")
+    public WebElement registerTitle;
+
 }

@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
 //        },
         features = "./src/test/resources/features",
         glue = "com/linnbank/stepdef",
-        tags = "@user_Settings_test",
-        dryRun = false,
+        tags = "@verifycustomerdate",
+        dryRun = true,
         monochrome = true
 )
 public class Runner {

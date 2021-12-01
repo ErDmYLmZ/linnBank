@@ -22,13 +22,13 @@ Feature: US004
     Given "<role>" is on the "<page>" page
 #    And Sign Out
     Examples:
-      | role         | page             |
-#      | user         | User Info        |
-#      | user         | Password         |
+      | role     | page             |
+#      | customer         | User Info        |
+#      | customer         | Password         |
 #      | admin        | User Management  |
 #      | manager      | Manage Customers |
 #      | manager      | Manage Accounts  |
-      | employee     | Manage Customers |
+      | employee | Manage Customers |
 #      | employee     | Manage Accounts  |
 #      | customer     | My Accounts      |
 #      | customer     | Transfer Money   |
