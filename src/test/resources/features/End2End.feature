@@ -14,12 +14,19 @@ Feature: End2End
     And Enter "valid" "secondPassword"
     Then Click on register
     And verify registered "successfully"
-    And Sign Out
+
+  Scenario: Verify that user has been created on database
+    Given User is connected to database
+    When verify that user has "registered" on application
 
   Scenario: admin activates user
     Given "admin" is on the "User Management" page
     And activate "user"
     And Sign Out
+
+  Scenario: Verify that user has been activated on database
+    Given User is connected to database
+    When verify that user has "activated" on application
 
   Scenario: Add customer
     Given "employee" is on the "Manage Customers" page
@@ -29,6 +36,10 @@ Feature: End2End
     And employee chooses two accounts from account section 1 and 5
     When employee clicks on Save button
     And Sign Out
+
+  Scenario: Verify that user has been assigned on database
+    Given User is connected to database
+    When verify that user has "assigned" on application
 
   Scenario: Transfer Money
     Given "user" is on the "My Accounts" page
