@@ -13,6 +13,8 @@ public class Registrant {
     private String userName;
     private String email;
     private String password;
+    private Long userId;
+    private Long customerId;
 
     private static final Faker faker = new Faker();
 
@@ -90,5 +92,21 @@ public class Registrant {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 }
