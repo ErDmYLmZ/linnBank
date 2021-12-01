@@ -42,6 +42,12 @@ public class DateUtil {
         return dtf.format(curentDateTime.plusYears(year).plusMonths(month).plusDays(day));
     }
 
+    public static String getManipulatedDate(int minutes, int hours) {
+        LocalDateTime curentDateTime = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
+        return dtf.format(curentDateTime.plusHours(hours).plusMinutes(minutes));
+    }
+
 }
 
 
