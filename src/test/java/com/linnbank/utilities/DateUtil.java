@@ -3,6 +3,9 @@ package com.linnbank.utilities;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class DateUtil {
@@ -37,6 +40,12 @@ public class DateUtil {
         LocalDateTime curentDateTime = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
         return dtf.format(curentDateTime.plusYears(year).plusMonths(month).plusDays(day));
+    }
+
+    public static String getManipulatedDate(int minutes, int hours) {
+        LocalDateTime curentDateTime = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
+        return dtf.format(curentDateTime.plusHours(hours).plusMinutes(minutes));
     }
 
 }

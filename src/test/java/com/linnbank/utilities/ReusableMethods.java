@@ -1,6 +1,8 @@
 package com.linnbank.utilities;
 
+import io.cucumber.java.en.Then;
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -207,5 +209,11 @@ public class ReusableMethods {
 
     public static List<String> convertWebElementListToStringList(List<WebElement> list){
         return list.stream().map(t -> t.getAttribute("innerText")).collect(Collectors.toList());
+    }
+    //Asserting via attribute value
+    public static void assertByAttribute(WebElement element) {
+        //boolean descriptionErrorMsg = manageAccountsPage.descriptionTextBox.getAttribute("class").contains("invalid");
+        boolean errorMsgAttribute = element.getAttribute("class").contains("invalid");
+        Assert.assertFalse(errorMsgAttribute);
     }
 }
