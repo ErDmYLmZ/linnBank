@@ -1,23 +1,28 @@
-//package com.linnbank.stepdef;
-//
-//import io.cucumber.java.en.*;
-//
-//public class US011 {
-//
-//    @When("employee navigates to last page on pagination")
-//    public void employee_navigates_to_last_page_on_pagination() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
-//    @When("employee clicks on the last added customer Edit button on the page")
-//    public void employee_clicks_on_the_last_added_customer_edit_button_on_the_page() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
-//    @Then("employee checks all inbox fields and fill them if empty")
-//    public void employee_checks_all_inbox_fields_and_fill_them_if_empty() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
-//
-//}
+package com.linnbank.stepdef;
+
+import com.github.javafaker.Faker;
+import com.linnbank.utilities.DateUtil;
+import com.linnbank.utilities.ReusableMethods;
+import io.cucumber.java.en.*;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+
+public class US011_Date_Of_The_Customer_Creation {
+
+
+
+    public static void main(String[] args) {
+
+        System.out.println("DateUtil.getManipulatedDate(0,0) = " + DateUtil.getManipulatedDate(0, 0));
+        System.out.println("DateUtil.getManipulatedDate(5,5,5) = " + DateUtil.getManipulatedDate(5, 5, 5));
+
+    }
+
+
+}
+

@@ -70,6 +70,16 @@ public class Account {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", balance=" + balance +
+                ", accountType='" + accountType + '\'' +
+                ", accountStatusType='" + accountStatusType + '\'' +
+                ", createDate='" + createDate + '\'' +
+                ", closedDate='" + closedDate + '\'' +
+                '}';
+    }
 }
