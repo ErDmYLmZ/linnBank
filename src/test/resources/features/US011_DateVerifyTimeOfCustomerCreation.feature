@@ -1,19 +1,16 @@
 Feature: Customer page
-
-  Background: Navigate to related page
+#The date cannot be typed earlier, in the past, at the time of creation a customer
+#The date should be created as month, day, year, hour and minute
+#User can choose a user from the registration and it cannot be blank
+#There user can choose an account created on manage accounts
+#User can select Zelle Enrolled optionally and save it
+  Scenario: Add customer
     Given "employee" is on the "Manage Customers" page
-
-  @edit_customer
-  Scenario: Edit customer information
-    When employee navigates to last page on pagination
-    And employee clicks on the 13 customer "Edit" button on the page
-    Then employee checks fields and updates fields
-      | firstName | lastName | MiddleInitial | Email                           | MobilePhone  | PhoneNumber  | ZipCode | Address        | City       | SSN         | CreateDate | CreateHour |
-      | George    | Bush     | W.            | kiskananlarcatlasin@usamail.com | 555-555-5555 | 444-444-4444 | 00100   | cono mahallesi | Washington | 297-55-4639 | 12/18/2000 | 13:00      |
+    Then user creates a customer
+    And user search SSN,
+    And user enter middleInitial, zipcode, city, country,
     And employee chooses two accounts from account section 1 and 5
-    And employee clicks Zelle Enrolled if unchecked
-    And employee clicks on Save button
-    Then employee verify the success message on the Manage Customer page
+    When employee clicks on Save button
 
   @view_customer @verifycustomerdate
   Scenario: view customer data

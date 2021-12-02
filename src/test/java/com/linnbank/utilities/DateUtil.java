@@ -38,13 +38,13 @@ public class DateUtil {
     // dd/MM/yyyy HH:mm a   --> 25/11/2021 03:45 AM
     public static String getManipulatedDate(int day, int month, int year) {
         LocalDateTime curentDateTime = LocalDateTime.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
         return dtf.format(curentDateTime.plusYears(year).plusMonths(month).plusDays(day));
     }
 
     public static String getManipulatedDate(int minutes, int hours) {
         LocalDateTime curentDateTime = LocalDateTime.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm a");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
         return dtf.format(curentDateTime.plusHours(hours).plusMinutes(minutes));
     }
 
