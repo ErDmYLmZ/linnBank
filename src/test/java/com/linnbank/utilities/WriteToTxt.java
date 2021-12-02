@@ -8,7 +8,7 @@ import java.util.List;
 
 public class WriteToTxt {
 
-    public static void saveDataInFile(String fileName, Customer[] customers)  {
+    public static void saveDataInFile(String fileName, Customer9[] customers)  {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
             for (int i=0;i<customers.length;i++)
@@ -32,7 +32,7 @@ public class WriteToTxt {
         }
     }
 
-    public static void saveDataInFileWithSSN(String fileName, Customer[] customers)  {
+    public static void saveDataInFileWithSSN(String fileName, Customer9[] customers)  {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
 
