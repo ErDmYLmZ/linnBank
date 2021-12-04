@@ -9,9 +9,7 @@ import com.linnbank.pojos.Container;
 import com.linnbank.pojos.Country;
 import com.linnbank.pojos.Customer;
 import com.linnbank.pojos.Registrant;
-import com.linnbank.utilities.ConfigReader;
-import com.linnbank.utilities.DatabaseUtility;
-import com.linnbank.utilities.ReusableMethods;
+import com.linnbank.utilities.*;
 import io.cucumber.java.en.*;
 
 import io.restassured.RestAssured;
@@ -59,28 +57,6 @@ public class End2End {
     @Given("User is connected to database")
     public void user_is_connected_to_database() {
         DatabaseUtility.createConnection();
-    }
-
-    @When("verify that user has {string} on application")
-    public void verify_that_user_has_on_application(String string) throws Exception {
-        switch (string) {
-            case "registered":
-                String Q1 = "SELECT * FROM  jhi_user WHERE login = '" + Container.registrant.getUserName() + "' AND activated = false";
-                Long userId = (Long) (DatabaseUtility.getQueryResultList((Q1)).get(0).get(0));
-                Container.registrant.setUserId(userId);
-                break;
-            case "activated":
-                String Q2 = "SELECT * FROM  jhi_user WHERE login = '" + Container.registrant.getUserName() + "' AND activated = true";
-                DatabaseUtility.executeQuery(Q2);
-                break;
-            case "assigned":
-                String Q3 = "SELECT * FROM  tp_customer WHERE user_id = " + Container.registrant.getUserId();
-                Long customerId = (Long) (DatabaseUtility.getQueryResultList((Q3)).get(0).get(0));
-                Container.registrant.setCustomerId(customerId);
-                break;
-        }
-        Assert.assertTrue(DatabaseUtility.getRowCount() > 0);
-
     }
 
     @Given("user sets all response using api end point {string}")
