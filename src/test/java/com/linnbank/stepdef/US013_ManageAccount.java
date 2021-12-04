@@ -1,16 +1,19 @@
 package com.linnbank.stepdef;
 import com.linnbank.pages.ManageAccountsPage;
+import com.linnbank.pages.MyAccountsPage;
 import com.linnbank.utilities.DateUtil;
 import com.linnbank.utilities.Driver;
 import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 
 
 public class US013_ManageAccount {
     ManageAccountsPage manageAccountsPage;
+    MyAccountsPage myAccountsPage;
 
     @And("user clicks on the CreateANewAccount button")
     public void userClicksOnTheCreateANewAccountButton() {
@@ -125,6 +128,30 @@ public class US013_ManageAccount {
         ReusableMethods.waitFor(3);
         Assert.assertFalse(closedDateErrorMsg);
     }
+
+    @Given("user clicks on the viewTransaction button")
+    public void user_clicks_on_the_view_transaction_button() {
+
+    }
+
+    @Given("verify if there is an account type")
+    public void verify_if_there_is_an_account_type() {
+        myAccountsPage = new MyAccountsPage();
+        Assert.assertTrue(myAccountsPage.accountBalance.getText().equals("Account Balance"));
+    }
+    @Given("user clicks on the viewTransaction button and verify if there is a transaction table")
+    public void user_clicks_on_the_view_transaction_button_and_verify_if_there_is_a_transaction_table() {
+
+        myAccountsPage = new MyAccountsPage();
+        for (WebElement elt : myAccountsPage.viewTransaction) {
+            elt.click();
+            Assert.assertTrue(myAccountsPage.transactionTable.isDisplayed());
+        }
+    }
+
+
+
+
     @Then("Close the application")
     public void close_the_application() {
         Driver.closeDriver();
