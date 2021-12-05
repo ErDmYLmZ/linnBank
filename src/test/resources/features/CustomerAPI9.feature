@@ -1,7 +1,7 @@
 @CustomerAPI9
   Feature: Api data reading
     Background: set the api data into response
-      Given user uses api end point "https://www.gmibank.com/api/tp-customer?=size=2000" to get all customer data
+      Given user uses api end point "https://www.gmibank.com/api/tp-customers?=size=2000" to get all customer data
 
       Scenario: get api data and validate
         Given user should get all customer data and deserialize the data to java

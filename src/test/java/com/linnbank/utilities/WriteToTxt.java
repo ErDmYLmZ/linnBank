@@ -8,29 +8,29 @@ import java.util.List;
 
 public class WriteToTxt {
 
-    public static void saveDataInFile(String fileName, Customer9[] customers)  {
+    public static void saveDataInFile(String fileName, Customer[] customer)  {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
-            for (int i=0;i<customers.length;i++)
+            for (int i=0;i<customer.length;i++)
 
-                writer.append(customers[i].getSsn()+",\n");
+                writer.append(customer[i].getSsn()+",\n");
 
             writer.close();
         } catch(Exception e){
 
         }
     }
-    public static void saveDataInFileWithSSN(String fileName, Customer customer)  {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
-
-            writer.append(customer.getSsn());
-
-            writer.close();
-        } catch(Exception e){
-
-        }
-    }
+//    public static void saveDataInFileWithSSN(String fileName, Customer[] customers)  {
+//        try {
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+//
+//            writer.append(customers.getSsn());
+//
+//            writer.close();
+//        } catch(Exception e){
+//
+//        }
+//    }
 
     public static void saveDataInFileWithSSN(String fileName, Customer9[] customers)  {
         try {

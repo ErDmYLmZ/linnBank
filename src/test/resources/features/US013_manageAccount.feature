@@ -101,3 +101,7 @@ Feature: Create_A_New_Account
       Examples: Test Data
         | Description             | Balance |
         | New Account_6thGenQA_06 | 4000    |
+
+      @GetToken
+      Scenario: Getting the api token
+        When user uses api token to establish a connection

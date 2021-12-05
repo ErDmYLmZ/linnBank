@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linnbank.pojos.Customer9;
 import com.linnbank.utilities.ConfigReader;
 import com.linnbank.utilities.ReadTxt;
+import com.linnbank.utilities.ReusableMethods;
 import com.linnbank.utilities.WriteToTxt;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,8 +20,7 @@ import static io.restassured.RestAssured.*;
 
 public class CustomerAPI9steps {
     Response response;
-    //String url = ConfigReader.getProperty("gmibank_login_url");
-    String bearerToken = ConfigReader.getProperty("api_bearer_token");
+    String bearerToken = ReusableMethods.getToken();
     Customer9[] customers;
     String fileName = ConfigReader.getProperty("fileNameOfCustomerSSN");
 
