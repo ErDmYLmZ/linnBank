@@ -32,7 +32,7 @@ public class WriteToTxt {
 //        }
 //    }
 
-    public static void saveDataInFileWithSSN(String fileName, Customer9[] customers)  {
+    public static void saveDataInFileWithSSN(String fileName, Customer[] customers)  {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
 

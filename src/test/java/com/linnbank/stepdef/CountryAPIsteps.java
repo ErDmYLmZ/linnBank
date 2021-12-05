@@ -1,8 +1,7 @@
 package com.linnbank.stepdef;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.linnbank.pojos.Country9;
+import com.linnbank.pojos.Country;
 import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,10 +13,10 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class CountryAPI9steps {
+public class CountryAPIsteps {
     Response response;
     String bearerToken = ReusableMethods.getToken();
-    Country9[] countries;
+    Country[] countries;
 
 
     @Given("user sets the response using api end point {string} and creates country using {string} and {string}")
@@ -58,7 +57,7 @@ public class CountryAPI9steps {
     public void user_saves_the_countries_to_correspondent_files() throws Exception {
         response.prettyPrint();
         ObjectMapper obj = new ObjectMapper();
-        countries = obj.readValue(response.asString(), Country9[].class);
+        countries = obj.readValue(response.asString(), Country[].class);
         System.out.println(countries[0].getName());
     }
 
