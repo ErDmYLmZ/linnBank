@@ -21,4 +21,13 @@ public class MyAccountsPage {
     @FindBy(xpath = "//table/tbody/tr/td[4]/button")
     public List<WebElement> allAccountsViewTransaction;
 
+    @FindBy(xpath = "(//table)[2]")
+    public WebElement transactionTable;
+
+    @FindBy(xpath = "//button[@class='btn btn-success btn-sm']")
+    public List<WebElement> viewTransaction;
+
+    @FindBy(xpath = "(//th)[2]")
+    public WebElement accountBalance;
+
 }
