@@ -157,6 +157,11 @@ public class US013_ManageAccount {
         Driver.closeDriver();
     }
 
+    @When("user uses api token to establish a connection")
+    public void user_uses_api_token_to_establish_a_connection() {
+        System.out.println(ReusableMethods.getToken());
+    }
+
 
 
 }
