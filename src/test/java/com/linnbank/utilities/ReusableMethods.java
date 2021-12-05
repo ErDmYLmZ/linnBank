@@ -1,8 +1,12 @@
 package com.linnbank.utilities;
 
 import io.cucumber.java.en.Then;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
@@ -11,12 +15,11 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static io.restassured.RestAssured.given;
 
 public class ReusableMethods {
 
@@ -215,5 +218,26 @@ public class ReusableMethods {
         //boolean descriptionErrorMsg = manageAccountsPage.descriptionTextBox.getAttribute("class").contains("invalid");
         boolean errorMsgAttribute = element.getAttribute("class").contains("invalid");
         Assert.assertFalse(errorMsgAttribute);
+    }
+
+    //Getting the Bearer token
+
+    public static String getToken(){
+
+        String url= ConfigReader.getProperty("api_bearer_token_url");
+        String userName=ConfigReader.getProperty("employeeRole");
+        String password = ConfigReader.getProperty("employeePassword");
+        HashMap<String,String> requestBody = new HashMap<String,String>();
+        requestBody.put("username",userName);
+        requestBody.put("password",password);
+        Response response = given().
+                contentType(ContentType.JSON).
+                body(requestBody).
+                when().
+                post(url);
+        JsonPath json=response.jsonPath();
+        System.out.println(json);
+        String useToken=json.getString("id_token");
+        return useToken;
     }
 }
