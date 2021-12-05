@@ -20,7 +20,7 @@ public class CustomerAPISteps {
     String bearerToken = ConfigReader.getProperty("api_bearer_token");
     String fileName = ConfigReader.getProperty("fileNameOfCustomerSSN");
 
-    Customer [] customers;
+    Customer[] customers;
     @Given("user uses api end point {string} to get all customer data")
     public void user_uses_api_end_point_to_get_all_customer_data(String url) {
 
@@ -62,10 +62,12 @@ public class CustomerAPISteps {
     @Then("user needs to validate all customer api data")
     public void user_needs_to_validate_all_customer_api_data() {
         List<String> expectedSSNIds = new ArrayList<>();
-        expectedSSNIds.add("297-55-4639");
-        expectedSSNIds.add("126-34-7860");
+        expectedSSNIds.add("049-96-3611");
+        expectedSSNIds.add("333-34-2395");
+
 
         List<String> actualSSNIDs = ReadTxt.returnCustomerSNNList(fileName);
+        System.out.println(actualSSNIDs);
         Assert.assertTrue("All SSN Ids are not matching!", actualSSNIDs.containsAll(expectedSSNIds));
 
     }
