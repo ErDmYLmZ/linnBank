@@ -1,4 +1,4 @@
-@CountryAPI9
+@CountryAPI
 Feature: Read countries
 
 

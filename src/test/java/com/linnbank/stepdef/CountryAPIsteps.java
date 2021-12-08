@@ -1,5 +1,6 @@
 package com.linnbank.stepdef;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.linnbank.pojos.Country;
 import com.linnbank.utilities.ReusableMethods;
@@ -27,9 +28,9 @@ public class CountryAPIsteps {
 
 
         response = given().headers("Authorization",
-                "Bearer "+bearerToken,
-                "Content-Type", ContentType.JSON,
-                "Accept", ContentType.JSON).
+                        "Bearer "+bearerToken,
+                        "Content-Type", ContentType.JSON,
+                        "Accept", ContentType.JSON).
                 when().body(data).
                 post(url).
                 then().
@@ -41,16 +42,16 @@ public class CountryAPIsteps {
 
     @Given("user sets the countries to response using {string}")
     public void user_sets_the_countries_to_response_using(String url) {
-       response= given().headers("Authorization",
-               "Bearer "+bearerToken,
-               "Content-Type", ContentType.JSON,
-               "Accept", ContentType.JSON).
-               when().
-               get(url).
-               then().
-               contentType(ContentType.JSON).
-               extract().
-               response();
+        response= given().headers("Authorization",
+                        "Bearer "+bearerToken,
+                        "Content-Type", ContentType.JSON,
+                        "Accept", ContentType.JSON).
+                when().
+                get(url).
+                then().
+                contentType(ContentType.JSON).
+                extract().
+                response();
     }
 
     @Given("user saves the countries to correspondent files")
