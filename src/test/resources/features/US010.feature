@@ -15,13 +15,13 @@ Feature: US010
     And employee chooses two accounts from account section 1 and 5
     And  type adress textbox "<newAdress>"
     Then verify that Address isn't created
-    And Close the application
+    #And Close the application
 
     Examples: Adress Data
     |newAdress|
     |frankfurter strasse|
-    | 451    |
-    |        |
+    #| 451    |
+    #|        |
 
     @city_textbox_negative
   Scenario Outline:negative city
@@ -49,7 +49,7 @@ Feature: US010
     And employee chooses two accounts from account section 1 and 5
     And  type customer adress textbox
     Then verify that Address isn't created
-    #And  Close the application
+    And  Close the application
 
     Examples: State Data
       |newState|
