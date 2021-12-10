@@ -1,5 +1,6 @@
 package com.linnbank.stepdef;
 
+import com.github.javafaker.Address;
 import com.github.javafaker.Faker;
 import com.linnbank.pages.MainPage;
 import com.linnbank.pages.ManageCustomersPage;
@@ -11,10 +12,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.it.Ma;
+import org.junit.Assert;
 import org.kohsuke.rngom.parse.host.Base;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class US010_Adress_creating {
@@ -117,15 +123,25 @@ public class US010_Adress_creating {
     public void type_adress_textbox(String address) {
         BrowserUtils.wait(1);
         manageCustomersPage.adress.sendKeys(address);
-
+        customer.setAddress(address);
     }
 
     @Then("verify that Address isn't created")
     public void verify_that_address_isn_t_created() {
-        BrowserUtils.wait(2);
+        BrowserUtils.wait(1);
         manageCustomersPage.saveButton.click();
-        BrowserUtils.wait(10);
-        System.out.println(customer.getSsn());
+        BrowserUtils.wait(2);
+       JSUtils.clickElementByJS(manageCustomersPage.paginationLastPage);
+        List<String> columnText=new ArrayList<>();
+        List<WebElement> addressColumn=Driver.getDriver().findElements(By.xpath("//table//tbody//tr//td[8]"));
+        for( WebElement e: addressColumn){
+            columnText.add(e.getText());
+    }
+
+        System.out.println(columnText);
+        Boolean addressVerify=columnText.contains(customer.getAddress());
+
+        Assert.assertTrue(addressVerify);
 
 
     }
