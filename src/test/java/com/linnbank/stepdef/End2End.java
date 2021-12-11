@@ -19,6 +19,7 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.IOException;
 import java.util.List;
 
 import static com.linnbank.utilities.ReadTxt.returnAWholeRegistrant;
@@ -82,7 +83,7 @@ public class End2End {
     }
 
     @Given("user deserializes {string} data as json to java pojo")
-    public void user_deserializes_data_as_json_to_java_pojo(String type) throws JsonProcessingException {
+    public void user_deserializes_data_as_json_to_java_pojo(String type) throws IOException {
         ObjectMapper obj = new  ObjectMapper();
 
         switch (type){
