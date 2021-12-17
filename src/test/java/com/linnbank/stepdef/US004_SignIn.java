@@ -6,7 +6,6 @@ import com.linnbank.pages.SignInPage;
 import com.linnbank.pojos.Container;
 import com.linnbank.utilities.ConfigReader;
 import com.linnbank.utilities.Driver;
-import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -34,7 +33,7 @@ public class US004_SignIn {
                 signInPage.login(ConfigReader.getProperty(role + "Role"),
                         ConfigReader.getProperty(role + "Password"));
             } else {
-                signInPage.login(Container.registrant.getUserName(),
+                signInPage.login(Container.registrant.getLogin(),
                         Container.registrant.getPassword());
             }
         }

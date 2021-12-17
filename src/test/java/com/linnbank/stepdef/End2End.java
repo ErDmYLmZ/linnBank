@@ -1,30 +1,23 @@
 package com.linnbank.stepdef;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.linnbank.pages.ManageCustomersPage;
-import com.linnbank.pages.SignInPage;
 import com.linnbank.pojos.Container;
 import com.linnbank.pojos.Country;
 import com.linnbank.pojos.Customer;
-import com.linnbank.pojos.Registrant;
 import com.linnbank.utilities.ConfigReader;
 import com.linnbank.utilities.DatabaseUtility;
 import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.en.*;
 
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 
 import java.io.IOException;
-import java.util.List;
 
-import static com.linnbank.utilities.ReadTxt.returnAWholeRegistrant;
 import static io.restassured.RestAssured.given;
 
 public class End2End {
@@ -66,12 +59,12 @@ public class End2End {
     public void verify_that_user_has_on_application(String string) throws Exception {
         switch (string) {
             case "registered":
-                String Q1 = "SELECT * FROM  jhi_user WHERE login = '" + Container.registrant.getUserName() + "' AND activated = false";
+                String Q1 = "SELECT * FROM  jhi_user WHERE login = '" + Container.registrant.getLogin() + "' AND activated = false";
                 Long userId = (Long) (DatabaseUtility.getQueryResultList(Q1).get(0).get(0));
                 Container.registrant.setUserId(userId);
                 break;
             case "activated":
-                String Q2 = "SELECT * FROM  jhi_user WHERE login = '" + Container.registrant.getUserName() + "' AND activated = true";
+                String Q2 = "SELECT * FROM  jhi_user WHERE login = '" + Container.registrant.getLogin() + "' AND activated = true";
                 DatabaseUtility.executeQuery(Q2);
                 break;
             case "assigned":

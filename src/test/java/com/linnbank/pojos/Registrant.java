@@ -1,5 +1,6 @@
 package com.linnbank.pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.javafaker.Faker;
 
@@ -10,12 +11,13 @@ public class Registrant {
     private String firstName;
     private String lastName;
     private String address;
-    private String phoneNumber;
-    private String userName;
+    private String mobilePhoneNumber;
+    private String login;
     private String email;
     private String password;
     private Long userId;
     private Long customerId;
+    private String langKey;
 
     private static final Faker faker = new Faker();
 
@@ -26,9 +28,10 @@ public class Registrant {
         this.firstName = faker.name().firstName();
         this.lastName = faker.name().lastName();
         this.password = faker.internet().password()+"!";
-        this.phoneNumber = faker.phoneNumber().phoneNumber();
-        this.userName = faker.name().username();
+        this.mobilePhoneNumber = faker.phoneNumber().phoneNumber();
+        this.login = faker.name().username();
         this.password = faker.internet().password(8,12,true,true,true).replaceAll("@","!")+"!";
+        this.langKey = "en";
     }
 
     public String getSsn() {
@@ -63,20 +66,20 @@ public class Registrant {
         this.address = address;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getMobilePhoneNumber() {
+        return mobilePhoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setMobilePhoneNumber(String mobilePhoneNumber) {
+        this.mobilePhoneNumber = mobilePhoneNumber;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getEmail() {
@@ -94,7 +97,7 @@ public class Registrant {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    @JsonIgnore
     public Long getUserId() {
         return userId;
     }
@@ -102,12 +105,20 @@ public class Registrant {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
-
+    @JsonIgnore
     public Long getCustomerId() {
         return customerId;
     }
 
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
+    }
+
+    public String getLangKey() {
+        return langKey;
+    }
+
+    public void setLangKey(String langKey) {
+        this.langKey = langKey;
     }
 }

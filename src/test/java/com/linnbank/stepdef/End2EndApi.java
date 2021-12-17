@@ -9,7 +9,7 @@ import com.linnbank.utilities.ReusableMethods;
 import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.json.JSONObject;
+import org.junit.Assert;
 
 import static io.restassured.RestAssured.given;
 
@@ -19,7 +19,7 @@ public class End2EndApi {
     String bearerToken = ReusableMethods.getToken();
 
     @Then("register with api")
-    public void test1() throws JsonProcessingException {
+    public void registerWithAPI() throws JsonProcessingException {
         Container.registrant = registrant;
         ObjectMapper mapper = new ObjectMapper();
         String reqBody = mapper.writeValueAsString(registrant);
@@ -34,10 +34,10 @@ public class End2EndApi {
                 .when().body(reqBody)
                 .post("https://gmibank.com/api/register")
                 .then()
-                .contentType(ContentType.JSON)
+//                .contentType(ContentType.JSON)
                 .extract()
                 .response();
 
-
+        Assert.assertTrue(response.getStatusCode()==201);
     }
 }

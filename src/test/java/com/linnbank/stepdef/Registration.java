@@ -10,10 +10,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import javax.xml.crypto.Data;
 
 public class Registration{
     Faker faker = new Faker();
@@ -40,10 +36,10 @@ public class Registration{
                     registerPage.addressInput.sendKeys(registrant.getAddress());
                     break;
                 case "mobilephone":
-                    registerPage.phoneInput.sendKeys(registrant.getPhoneNumber());
+                    registerPage.phoneInput.sendKeys(registrant.getMobilePhoneNumber());
                     break;
                 case "username":
-                    registerPage.usernameInput.sendKeys(registrant.getUserName());
+                    registerPage.usernameInput.sendKeys(registrant.getLogin());
                     break;
                 case "email":
                     registerPage.emailInput.sendKeys(registrant.getEmail());
