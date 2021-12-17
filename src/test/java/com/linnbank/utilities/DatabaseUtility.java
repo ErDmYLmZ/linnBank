@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 public class DatabaseUtility {
 
     private static Connection connection;
@@ -21,6 +22,7 @@ public class DatabaseUtility {
     private static ResultSet resultSet;
     private static int updatedRows;
     private static boolean isSuccess;
+
     public static void createConnection() {
         String url = ConfigReader.getProperty("database_url");
         String user = ConfigReader.getProperty("database_user");
@@ -43,6 +45,7 @@ public class DatabaseUtility {
             e.printStackTrace();
         }
     }
+
     public static void closeConnection() {
         try {
             if (resultSet != null) {
@@ -58,6 +61,7 @@ public class DatabaseUtility {
             e.printStackTrace();
         }
     }
+
     /**
      *
      * @param query
@@ -69,6 +73,7 @@ public class DatabaseUtility {
 
         return getQueryResultList(query).get(0).get(0);
     }
+
     /**
      *
      * @param query
@@ -80,6 +85,7 @@ public class DatabaseUtility {
 
         return getQueryResultList(query).get(0);
     }
+
     /**
      *
      * @param query
@@ -90,6 +96,7 @@ public class DatabaseUtility {
     public static Map<String, Object> getRowMap(String query) {
         return getQueryResultMap(query).get(0);
     }
+
     /**
      *
      * @param query
@@ -115,6 +122,7 @@ public class DatabaseUtility {
         }
         return rowList;
     }
+
     /**
      *
      * @param query
@@ -136,6 +144,7 @@ public class DatabaseUtility {
         }
         return rowList;
     }
+
     /**
      *
      * @param query
@@ -162,6 +171,7 @@ public class DatabaseUtility {
         }
         return rowList;
     }
+
     /**
      *
      * @param query
@@ -183,7 +193,7 @@ public class DatabaseUtility {
         }
         return columns;
     }
-    public static void executeQuery(String query) {
+    public static ResultSet executeQuery(String query) {
         try {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         } catch (SQLException e) {
@@ -198,7 +208,9 @@ public class DatabaseUtility {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return resultSet;
     }
+
     public static int getRowCount() throws Exception {
         resultSet.last();
         int rowCount = resultSet.getRow();
@@ -206,8 +218,6 @@ public class DatabaseUtility {
     }
 
     public static void insertCountry(String  countryName){
-
-
 
 
     }
@@ -291,6 +301,7 @@ public class DatabaseUtility {
             e.printStackTrace();
         }
     }
+
     public static void execute(String dml) {
         try {
             statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
