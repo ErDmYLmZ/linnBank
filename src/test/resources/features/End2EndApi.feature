@@ -2,34 +2,26 @@ Feature: End2End
   Background:
     Given "admin" is on the "User Management" page
     And Sign Out
-  @regression
+
+  @regression_api
+# qarsli
   Scenario: Register with valid fields 1
-    Given "unregistered" is on the "Register" page
-    And Enter "valid" "ssn"
-    And Enter "valid" "firstname"
-    And Enter "valid" "lastname"
-    And Enter "valid" "address"
-    And Enter "valid" "mobilephone"
-    And Enter "valid" "username"
-    And Enter "valid" "email"
-    And Enter "valid" "firstPassword"
-    And Enter "valid" "secondPassword"
-    Then Click on register
-    And verify registered "successfully"
+    Then register with api
 
   Scenario: Verify that user has been created on database
     Given User is connected to database
     When verify that user has "registered" on application
-
+# qarsli
   Scenario: admin activates user
     Given "admin" is on the "User Management" page
-    And activate "user"
+    And activate "user" with api
     And Sign Out
 
   Scenario: Verify that user has been activated on database
     Given User is connected to database
     When verify that user has "activated" on application
 
+#  ali osman
   Scenario: Add customer
     Given "employee" is on the "Manage Customers" page
     Then user creates a customer
@@ -44,9 +36,11 @@ Feature: End2End
     When verify that user has "assigned" on application
 
   Scenario: Transfer Money
+#    erdem
     Given "user" is on the "My Accounts" page
     And retrieve account data
     Then Sign Out
+#    enes
     Given "user" is on the "Transfer Money" page
     And customer choose first account to transfer money from
     And customer choose second account to transfer money to

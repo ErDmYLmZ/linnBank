@@ -1,9 +1,10 @@
 package com.linnbank.pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.javafaker.Faker;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Registrant {
-
 
     private String ssn;
     private String firstName;
