@@ -1,9 +1,7 @@
 package com.linnbank.stepdef;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.javafaker.Faker;
 import com.linnbank.pages.ManageCustomersPage;
 import com.linnbank.pages.SignInPage;
@@ -20,26 +18,21 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.*;
+import java.io.IOException;
+import java.util.List;
 
 import static com.linnbank.utilities.ReadTxt.returnAWholeRegistrant;
 import static io.restassured.RestAssured.given;
 
 public class End2End {
-
     ManageCustomersPage manageCustomersPage = new ManageCustomersPage();
     Faker faker = new Faker();
     Response response;
-    List<Customer> customerListAPI;
-    List<Customer> customerListJDBC;
+    Object[] responseData;
 
-    List<Country> countryList;
 
     @Then("user creates a customer")
     public void user_creates_a_customer() {
@@ -74,7 +67,7 @@ public class End2End {
         switch (string) {
             case "registered":
                 String Q1 = "SELECT * FROM  jhi_user WHERE login = '" + Container.registrant.getUserName() + "' AND activated = false";
-                Long userId = (Long) (DatabaseUtility.getQueryResultList((Q1)).get(0).get(0));
+                Long userId = (Long) (DatabaseUtility.getQueryResultList(Q1).get(0).get(0));
                 Container.registrant.setUserId(userId);
                 break;
             case "activated":
@@ -103,7 +96,7 @@ public class End2End {
                         "Accept",
                         ContentType.JSON)
                 .when()
-                .get(base_url + resource)
+                .get(base_url+resource)
                 .then()
                 .contentType(ContentType.JSON)
                 .extract()
@@ -114,27 +107,35 @@ public class End2End {
     }
 
     @Given("user deserializes {string} data as json to java pojo")
-    public void user_deserializes_data_as_json_to_java_pojo(String type) throws JsonProcessingException, SQLException {
-        ObjectMapper obj = new ObjectMapper();
+    public void user_deserializes_data_as_json_to_java_pojo(String type) throws IOException {
+        ObjectMapper obj = new  ObjectMapper();
 
-        switch (type) {
+        switch (type){
             case "customer":
-                Map<String,String> result = obj.readValue(response.asString(), HashMap.class);
-                System.out.println(result);
+                responseData = obj.readValue(response.asString(), Customer[].class);
+                for (Customer each:(Customer[]) responseData) {
+                    if(each.getUser() != null)
+                        System.out.println("id: "+ each.getUser().getFirstName());
+                }
                 break;
             case "country":
-                countryList = Arrays.asList(obj.readValue(response.asString(), Country[].class));
+                responseData = obj.readValue(response.asString(), Country[].class);
+
                 break;
         }
 
 
+
+//        for(int i=0; i<responseData.length;i++ ){
+//
+//            if(responseData[i].getUser() != null)
+//                System.out.println("id: "+ customers[i].getUser().getFirstName());
+//        }
     }
 
     @Then("user validates the {string} data")
     public void user_validates_the_data(String string) {
-
-
-
-        customerListAPI.containsAll(customerListJDBC);
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
     }
 }
