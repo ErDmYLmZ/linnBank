@@ -305,11 +305,11 @@ public class ReadTxt {
                 Registrant registrant = new Registrant();
 
                 registrant.setPassword(line.split(",")[0].trim());
-                registrant.setUserName(line.split(",")[1].trim());
+                registrant.setLogin(line.split(",")[1].trim());
                 registrant.setFirstName(line.split(",")[2].trim());
                 registrant.setLastName(line.split(",")[3].trim());
                 registrant.setSsn(line.split(",")[4].trim());
-                registrant.setPhoneNumber(line.split(",")[5].trim());
+                registrant.setMobilePhoneNumber(line.split(",")[5].trim());
                 registrant.setAddress(line.split(",")[6].trim());
                 registrant.setEmail(line.split(",")[7].trim());
 

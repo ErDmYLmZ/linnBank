@@ -14,7 +14,7 @@ Feature: US001 Registration
     And Enter "valid" "email"
     And Enter "valid" "firstPassword"
     And Enter "valid" "secondPassword"
-    Then Click on register
-    And verify registered "successfully"
-    And activate "user"
+#    Then Click on register
+#    And verify registered "successfully"
+#    And activate "user"
 #    And delete registrant
