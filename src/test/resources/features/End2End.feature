@@ -1,5 +1,22 @@
 Feature: End2End
   Background:
+
+  @regression
+  Scenario: Register with valid fields 1
+    Given "unregistered" is on the "Register" page
+    And Enter "valid" "ssn"
+    And Enter "valid" "firstname"
+    And Enter "valid" "lastname"
+    And Enter "valid" "address"
+    And Enter "valid" "mobilephone"
+    And Enter "valid" "username"
+    And Enter "valid" "email"
+    And Enter "valid" "firstPassword"
+    And Enter "valid" "secondPassword"
+    Then Click on register
+    And verify registered "successfully"
+
+  Scenario: admin activates user
     Given "admin" is on the "User Management" page
     And Sign Out
 
