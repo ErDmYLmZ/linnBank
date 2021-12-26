@@ -31,12 +31,12 @@ Feature: End2EndApi
 #  Scenario: Verify that user has been assigned on database
 #    Given User is connected to database
 #    When verify that user has "assigned" on application
-#
-#  Scenario: Transfer Money
-##    erdem
-#    Given "user" is on the "My Accounts" page
-#    And retrieve account data
-#    Then Sign Out
+
+#    erdem
+  Scenario: Transfer Money with api
+    Given "user" is on the "My Accounts" page with api
+    And retrieve account data with api
+    Then Sign Out with api
 ##    enes
 #    Given "user" is on the "Transfer Money" page
 #    And customer choose first account to transfer money from
